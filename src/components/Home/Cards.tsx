@@ -1,0 +1,35 @@
+
+import dev from '../../assets/dev.jpg'
+import Link from '../ui/Link'
+
+const Cards = () => {
+    return(
+        <div className="container-fluid row mx-5 cards">
+            <div className="col-md-2 me-5 card">
+                <h1>50+</h1>
+                <p>Startups</p>
+            </div>
+            <div className="col-md-2 mx-5 card">
+                <h1>120+</h1>
+                <p>Projects</p>
+            </div>
+            <div className="col-md-2 mx-5 card">
+                <h1>15+</h1>
+                <p>Communities</p>
+            </div>
+            
+            <div className="mt-5 container d-flex align-items-center action">
+                <img src ={dev} className='card-img'/>
+                <h1 className="text-end">
+                    Are you a project manager or developper ? <br/>
+                    Let us add you project to the directory.
+                    <a href='/SignUp' className='mt-3 card-link'>Add your project</a>
+                </h1>
+                
+            </div>
+            
+        </div>
+    )
+}
+
+export default Cards

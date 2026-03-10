@@ -1,0 +1,232 @@
+/* Page d'erreur*/
+
+#error-page {
+    position: absolute;
+    top: 0
+}
+
+/* Style css pour la barre de navigation*/
+.navbar {
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 100%;
+    height: fit-content ! important;
+    color: black;
+}
+
+.navbar-nav {
+    width: 50%;
+}
+
+.navbar-toggler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2em;
+    width: 2em;
+    height: 2em
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar img {
+    width: 1em;
+    height: 1em;
+    margin-right: 0.3em;
+}
+
+.hero {
+    display: block;
+    align-content: center;
+    background: #28A745;
+    background: linear-gradient(180deg, rgba(40, 167, 69, 1) 50%, rgba(255, 206, 0, 1) 100%);
+    padding: 2em;
+    width: 100%;
+    min-height: 50vh;
+}
+
+.hero-span input {
+    position: relative;
+    background-color:#fff;
+    width: 40%;
+    height: 2.5em;
+    border: 1px #ccc solid;
+    border-radius: 10px;
+    outline: #ccc;
+}
+
+.hero-span img {
+    width: 2em;
+    height: 2em;
+}
+
+.hero-span input {
+    padding-left: 0.5em;
+    color: black;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2em;
+    gap: 1rem;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    width: 23%;
+    height: 9em;
+    border: 1px #ccc solid;
+    border-radius: 10px;
+    /*box-shadow: 0 10px 10px rgb(218, 222, 214);*/
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 20px rgb(180, 190, 175);
+}
+
+.card-img {
+    width: 25em;
+    height: 20em;
+    border-radius: 10% 30% 50% 70%;
+}
+
+.card-link {
+    color: white;
+    background-color: #28A745;
+    text-decoration: none;
+    width: 10em;
+    height: 3em;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin-left: 20rem;
+}
+
+.card-link:hover {
+    color: black;
+    background-color: #ccc;
+}
+
+.card h1 {
+    color: #28a745;
+}
+
+.projects {
+    flex-wrap: nowrap;
+}
+.project {
+    display: block;
+}
+
+.project {
+    width: 30%;
+    min-height: fit-content;
+}
+
+.project-icon {
+    width: 2em;
+    height: 2em;
+    margin-right: 1em;
+    padding: 0.5em;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.techno {
+    background-color: #ffeead;
+    min-width: 5em;
+    max-width: 7em;
+    border-radius: 50px;
+}
+
+.about-img {
+    width: 15em;
+    height: 15em;
+    border-radius: 100%;
+}
+
+.footer {
+    background-color: #28a745;
+    color: black;
+    padding: 1em;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+.footer img {
+    width: 2em;
+    height: 2em;
+}
+
+@media (max-width: 576px) {
+    
+    .navbar-nav {
+        margin-left: 0 !important;
+        display: flex;
+        justify-self: center;
+    }
+    .hero-span input {
+        width: 90%;
+    }
+    .cards {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+    }
+    .card {
+        width: auto;
+        display: grid;
+        margin-top: 2em;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .card-link {
+        margin-left: 0.3em;
+    }
+    .card-img{
+        width:80%;
+        height: 80%;
+        display: flex;
+        justify-self: center;
+    }
+    .action {
+        display: grid !important;
+        justify-self: center;
+    }
+    .action h1 {
+        text-align: center !important;
+    }
+    .projects {
+        margin-top: 2em;
+    }
+    .about {
+        display: grid !important;
+    }
+    .about-img {
+        justify-self: center;
+    }
+    .about p {
+        width: 90% !important
+    }
+}

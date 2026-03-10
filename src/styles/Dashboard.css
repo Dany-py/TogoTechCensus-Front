@@ -1,0 +1,77 @@
+
+.marge {
+    background-color: #fffffe;
+    width: 15%;
+    position: fixed;
+    left: 0;
+    border: 1px #ccc solid;
+}
+
+.marge-btn-group {
+    width: 70%;
+    height: fit-content;
+    display: grid;
+    justify-self: center;
+    justify-content: center;
+    margin-bottom: 50vh;
+}
+
+.marge-btn {
+    width: 10em;
+    height: 2.5em;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.marge-svg {
+    width: fit-content;
+}
+.marge-btn:hover {
+    width: 10em;
+    height: 2.5em;
+    align-content: center;
+    color: #28A745;
+    font-weight: bold;
+    background-color: #dff1df;
+    border-radius: 10px;
+}
+
+.marge-btn-focused {
+    width: 10em;
+    height: 2.5em;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    color: #28A745;
+    font-weight: bold;
+    background-color: #dff1df;
+    border-radius: 10px;
+}
+
+.dash-card {
+    border: 1px #ccc solid;
+    border-radius: 10px;
+}
+
+.notification {
+    height: 60vh;
+    overflow-y: auto;
+}
+
+.notification-span {
+    transform: scale(1);
+    transition: transform 0.5s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.notification-span:hover {
+    display: block;
+    width: fit-content;
+    border: 1px #ccc solid;
+    border-radius: 10px;
+    padding: 1em;
+    transform: scale(1.05);
+    box-shadow: 0 15px 20px rgb(180, 190, 175);
+}

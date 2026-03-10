@@ -1,0 +1,52 @@
+
+.connection {
+    background: #28A745;
+    background: linear-gradient(180deg, rgba(40, 167, 69, 1) 50%, rgba(255, 206, 0, 1) 100%);
+}
+
+.connection-form {
+    padding: 2em;
+    width: 50%;
+    color: black;
+    border: 1px #ccc solid;
+    border-radius: 20px;
+    background-color: var(--surface-transparent-color);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 5px 10px rgb(255, 252, 252);
+    font-size: 1em;
+}
+
+.login-btn {
+    width: 70%;
+    height: 3em;
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    border: 1px #ccc solid;
+}
+.login-img {
+    width: 100%;
+}
+.login-img {
+    width: 2em;
+    height: 2em;
+}
+
+.login-img-user {
+    background-color: #fff;
+    backdrop-filter: blur(30px);
+    width: 5em;
+    height: 5em;
+    border-radius: 100%;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+@media (max-width: 576px) {
+    .connection-form {
+        margin: 0 !important;
+        width: 90%;
+    }
+    .login-btn {
+        width: 90%;
+    }
+}

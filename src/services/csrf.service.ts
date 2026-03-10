@@ -1,0 +1,19 @@
+
+import axios from "axios";
+
+export const apiClient = axios.create({
+    withCredentials: true,
+    xsrfCookieName: 'csrftoken',
+    xsrfHeaderName: 'X-CSRFToken',
+})
+
+export async function initCSRF() {
+    try {
+        const url = import.meta.env.VITE_API_CSRF as string
+        if(!url) throw new Error('VITE_API_CSRF is missing in .env')
+        const response = await apiClient.get(url)
+        console.log('Response csrf :', response.data)
+    } catch (error) {
+        console.log('Error :', error)
+    }
+}
