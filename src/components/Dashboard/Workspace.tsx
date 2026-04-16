@@ -271,13 +271,13 @@ const Workspace = () => {
 
 
                                 {/* Technologies */}
-                                {project.technologies && project.technologies.length > 0 && (
+                                {project?.technologies && project.technologies.length > 0 && (
                                     <div className='mb-3 w-100 text-center'>
                                         <hr className='w-100' />
                                         <p className='fw-bold mb-2'>Technologies</p>
                                         <div className='d-flex flex-wrap gap-2 justify-content-center'>
-                                            {Array.isArray(project.technologies) && project.technologies.map((tech: string, index: number) => (
-                                                <span key={index} className='badge bg-secondary'>{tech}</span>
+                                            {Array.isArray(project.technologies) && project.technologies.map((tech: any, index: number) => (
+                                                <span key={index} className='badge bg-secondary'>{tech.name}</span>
                                             ))}
                                         </div>
                                     </div>

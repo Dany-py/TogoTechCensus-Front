@@ -12,13 +12,12 @@ const Project = () => {
     const url_mine = url + '?filter=mine'
     const [project, setProject] = useState<Array<IProject>>([])
     const [hasProject, setHasProject] = useState(false)
-    const [detail, setDetail] = useState(false)
     const [create, setCreate] = useState(false)
     const createProject = () => {
         setCreate(true)
     }
     const showDetail = () => {
-        setDetail(true)
+        console.log('Showing detail')
     }
     useEffect(() => {
         const fecthProject = async () => {

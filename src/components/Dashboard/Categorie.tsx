@@ -25,14 +25,8 @@ const categories = [
     { code: 'hubs-incubators-communities', name: 'Hubs, Incubators & Communities' },
 ]
 
-interface CategorieProps {
-    value: string,
-    onChange: (value: string) => void
-}
 const Categories = () => {
     const [selected, setSelected] = useState<string>("");
-    
-
     return (
         <div>
             <select

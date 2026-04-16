@@ -1,6 +1,4 @@
 
-import { useState } from "react"
-
 const types = [
     { code: 'STP', name: 'Startup' },
     { code: 'OS', name: 'Open Source'},

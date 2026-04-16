@@ -1,7 +1,7 @@
 
-import { redirect, type ActionFunctionArgs } from 'react-router-dom';
+import type { ActionFunctionArgs } from 'react-router-dom';
 import { AxiosError } from 'axios'
-import type { ProjectCreate, ProjectUpdate, Technologies } from '../types/Project';
+import type { ProjectCreate } from '../types/Project';
 import { apiClient } from './csrf.service';
 
 /**

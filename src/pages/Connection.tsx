@@ -5,9 +5,6 @@ import { useState, useEffect } from "react";
 import TitlePage from "../utils/Title";
 import '../styles/Connexion.css';
 const Connection = () => {
-    const [open, setOpen] = useState(false)
-    const [isAuth, setAuth] = useState(false)
-    const [isSign, setSign] = useState(false)
     const [isLogin, setLogin] = useState(false)
 
     const url = window.location.pathname
@@ -15,15 +12,6 @@ const Connection = () => {
     TitlePage({ refPath:window.location.pathname })
 
     useEffect(() => {
-        const auth = window.location.pathname
-        const storage = localStorage.getItem('')
-        if (storage) {
-            setSign(true)
-        }
-        if(auth === '/dashboard') {
-            setAuth(true)
-        }
-
         if (url === '/SignIn'){
             setLogin(true)
         }

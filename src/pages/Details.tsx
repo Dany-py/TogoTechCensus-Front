@@ -79,7 +79,7 @@ export const Details = () => {
                     logo={detail.logo_url}
                     stage={detail.stage}
                     type={detail.type.charAt(0).toUpperCase() + detail.type.slice(1)}
-                    description={detail.categories[0].name}
+                    description={Array.isArray(detail.categories) ? detail.categories[0]?.name : detail.categories}
                 />
 
                 {/* MAIN CONTENT */}
@@ -97,8 +97,8 @@ export const Details = () => {
                         <section className="detail-card my-3">
                             <h3>Technologies</h3>
                             <span className="detail-card-link-group text-center">
-                                {detail.technologies && detail.technologies.map((tech: any, index: number) => (
-                                    <span key={index} className='techno'> {tech.name} </span>
+                                {Array.isArray(detail.technologies) && detail.technologies.map((tech: any, index: number) => (
+                                    <span key={index} className='techno'> {typeof tech === 'string' ? tech : tech.name} </span>
                                 ))}
                             </span>
                         </section>

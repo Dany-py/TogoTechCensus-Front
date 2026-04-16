@@ -41,7 +41,7 @@ const About = () => {
                         { icon: '🚀', title: 'Innovation',          desc: 'Promote digital solutions that transform daily life.' },
                         { icon: '🤝', title: 'Communities',         desc: 'Building a tight-knit and supportive tech community.' },
                         { icon: '🎯', title: 'Excellency',          desc: 'Aim for quality in every feature offered.' },
-                    ].map(({ icon, title, desc }) => (
+                    ].map(({ title, desc }) => (
                         <div className="about-value-card" key={title}>
                             {/*<span className="about-value-icon">{icon}</span>*/}
                             <h3 className="about-value-title">{title}</h3>
