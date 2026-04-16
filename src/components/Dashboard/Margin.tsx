@@ -24,7 +24,7 @@ const Margin = ({ className, activeTab, onTabChange }: MarginProps) => {
                             <rect x="58" y="43" width="27" height="42" rx="6" stroke="#59b663" stroke-width="8" />
                         </svg>
                     </div>
-                    <p className="mx-2 mb-0">Home</p>
+                    <p className="mx-2 mb-0">Dashboard</p>
                     <br />
                 </div>
 
@@ -53,7 +53,7 @@ const Margin = ({ className, activeTab, onTabChange }: MarginProps) => {
                                 fill="#9fd4a0" fill-opacity="0.18" />
                         </svg>
                     </div>
-                    <p className="mx-2 mb-0">My Projects</p>
+                    <p className="mx-2 mb-0">Workshop</p>
                     <br />
                 </div>
 
@@ -75,13 +75,15 @@ const Margin = ({ className, activeTab, onTabChange }: MarginProps) => {
                 </div>
 
             </div>
-            {/*<div className="mt-5">
+            <div className="d-grid justify-content-center align-items-center">
                 <a href='mailto:support@togotechcensus.com' style={{
                     textDecoration: 'none',
-                    color: '#c1951c',
+                    color: '#59b663',
                     marginTop: '7em'
-                }}>support@togotechcensus.com</a>
-            </div>*/}
+                }}><strong>support@togotechcensus.com</strong></a>
+                <a href='/terms'>Terms</a>
+                <a href='/policy'>Policy</a>
+            </div>
         </div>
     )
 }

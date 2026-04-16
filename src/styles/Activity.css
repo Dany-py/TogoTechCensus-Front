@@ -1,0 +1,212 @@
+/* ═══════════════════════════════════════════════════════════════
+   ACTIVITY.CSS — Composant d'activités du dashboard
+   Sections :
+     1.  Onglets (Tabs)
+     2.  Liste d'activités
+     3.  Alertes
+     4.  Abonnés (Followers)
+     5.  Carte latérale (Aside Card)
+     6.  Bouton outline
+     7.  Scrollbar personnalisée
+     8.  Media queries
+═══════════════════════════════════════════════════════════════ */
+
+
+/* ─────────────────────────────────────────────
+   1. ONGLETS (TABS)
+───────────────────────────────────────────── */
+.activity-tabs {
+    padding: 0 0 1rem 0;
+    overflow-x: auto;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: #666;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.tab-btn:hover {
+    color: #333;
+}
+
+.tab-btn.active {
+    color: #28A745;
+}
+
+/* Indicateur de l'onglet actif */
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #28A745;
+}
+
+
+/* ─────────────────────────────────────────────
+   2. LISTE D'ACTIVITÉS
+───────────────────────────────────────────── */
+.activities-list {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.activity-item {
+    transition: background-color 0.2s ease;
+    border-radius: 4px;
+}
+
+.activity-item:hover {
+    background-color: #f9f9f9;
+}
+
+.activity-item p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.activity-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    flex-shrink: 0;
+}
+
+.activity-content {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ─────────────────────────────────────────────
+   3. ALERTES
+───────────────────────────────────────────── */
+.alerts-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.alert-item {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.alert-item:hover {
+    transform: translateX(2px);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.1);
+}
+
+
+/* ─────────────────────────────────────────────
+   4. ABONNÉS (FOLLOWERS)
+───────────────────────────────────────────── */
+.followers-list {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.follower-item {
+    transition: background-color 0.2s ease;
+}
+
+.follower-item:hover {
+    background-color: #f0f8f4;
+}
+
+
+/* ─────────────────────────────────────────────
+   5. CARTE LATÉRALE (ASIDE CARD)
+───────────────────────────────────────────── */
+.aside-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.aside-card h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+
+/* ─────────────────────────────────────────────
+   6. BOUTON OUTLINE VERT
+───────────────────────────────────────────── */
+.btn-outline-success {
+    color: #28A745;
+    border-color: #28A745;
+}
+
+.btn-outline-success:hover {
+    background-color: #28A745;
+    color: #fff;
+    border-color: #28A745;
+}
+
+
+/* ─────────────────────────────────────────────
+   7. SCROLLBAR PERSONNALISÉE
+───────────────────────────────────────────── */
+.activities-list::-webkit-scrollbar,
+.alerts-list::-webkit-scrollbar,
+.followers-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.activities-list::-webkit-scrollbar-track,
+.alerts-list::-webkit-scrollbar-track,
+.followers-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.activities-list::-webkit-scrollbar-thumb,
+.alerts-list::-webkit-scrollbar-thumb,
+.followers-list::-webkit-scrollbar-thumb {
+    background: #28A745;
+    border-radius: 3px;
+}
+
+.activities-list::-webkit-scrollbar-thumb:hover,
+.alerts-list::-webkit-scrollbar-thumb:hover,
+.followers-list::-webkit-scrollbar-thumb:hover {
+    background: #1f8c3b;
+}
+
+
+/* ─────────────────────────────────────────────
+   8. MEDIA QUERIES
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .tab-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    .aside-card { margin-top: 1.5rem; }
+    .activity-item {
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .tab-btn {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.85rem;
+    }
+}

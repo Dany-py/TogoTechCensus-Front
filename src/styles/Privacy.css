@@ -1,0 +1,58 @@
+/* ═══════════════════════════════════════════════════════════════
+   PRIVACY.CSS — Page Politique de confidentialité
+   Sections :
+     1.  Layout principal (grille 2 colonnes)
+     2.  Sidebar sticky
+     3.  Media queries
+═══════════════════════════════════════════════════════════════ */
+
+/* NOTE : les valeurs entre guillemets détectées dans l'ancien
+   fichier (ex : gap: "3rem") étaient de la syntaxe JSX invalide
+   en CSS — elles ont été corrigées. */
+
+
+/* ─────────────────────────────────────────────
+   1. LAYOUT PRINCIPAL
+───────────────────────────────────────────── */
+.privacy-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    gap: 4rem;
+    align-items: start;
+}
+
+
+/* ─────────────────────────────────────────────
+   2. SIDEBAR STICKY
+───────────────────────────────────────────── */
+.privacy-aside {
+    position: sticky;
+    top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+/* ─────────────────────────────────────────────
+   3. MEDIA QUERIES
+───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .privacy-main { gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+    .privacy-main {
+        grid-template-columns: 1fr;
+        padding: 3rem 1rem;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .privacy-main { gap: 1.5rem; }
+    .privacy-aside { display: none; }
+}

@@ -1,101 +1,128 @@
+import { useState, useEffect } from 'react'
+import '../../styles/Activity.css'
+import { apiClient } from '../../services/csrf.service'
+import axios from 'axios'
 
-import { useEffect, useState } from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+interface INotification {
+    type: string
+    title: string
+    message: string
+    notification_type: string
+}
 
-// Helper to generate colors or cycle through a premium palette
-const COLORS = [
-  '#FFD700', // Gold
-  '#00CED1', // Dark Turquoise
-  '#f89843ff', // Orange Red
-  '#32CD32', // Lime Green
-  '#9370DB', // Medium Purple
-  '#1E90FF', // Dodger Blue
-];
+interface IActivity {
+    id: string
+    title: string
+    message: string
+    notification_type: string
+}
 
-const Activity = () => {
+type TabType = 'all' | 'updates' | 'mentions' | 'comments'
+
+interface ActivityProps {
+    onMarkAsRead?: () => void;
+}
+
+const notificationTypeToTab: Record<string, Exclude<TabType, 'all'>> = {
+    project_submitted: 'updates',
+    mention: 'mentions',
+    comment: 'comments',
+}
+
+const Activity = ({ onMarkAsRead }: ActivityProps) => {
+    const [activeTab, setActiveTab] = useState<TabType>('all')
+    const [activities, setActivities] = useState<IActivity[]>([])
+
+    useEffect(() => {
+        const wsUrl = import.meta.env.VITE_API_WS as string
+        const ws = new WebSocket(`${wsUrl}ws/notifications/`)
+
+        ws.onmessage = (event) => {
+            const { type, title, message, notification_type } = JSON.parse(event.data) as INotification
+            console.log('Notification type :', notification_type)
+            console.log('Message de notification :', message)
+            setActivities(prev => [
+                { id: Date.now().toString(), title, message, notification_type },
+                ...prev
+            ])
+        }
+        const fetchActivity = async () => {
+            const url = import.meta.env.VITE_API_NOTIFY as string            
+            const response = await axios.get(url)
+            console.log('List des notification :', response.data)
+            setActivities(response.data.results)
+        }
+        fetchActivity()
+    }, [])
+
+    const filteredActivities = activeTab === 'all'
+        ? activities
+        : activities.filter(a => notificationTypeToTab[a.notification_type] === activeTab)
+
+    const tabs: { key: TabType; label: string }[] = [
+        { key: 'all', label: 'All Feed' },
+        { key: 'updates', label: 'Updates' },
+        { key: 'mentions', label: 'Mentions' },
+        { key: 'comments', label: 'Comments' },
+    ]
+
     return (
-        <div className="container">
-            <section>
-                <h1 className="text-start">Activities</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel praesentium quas eos! Optio, perspiciatis incidunt illum sunt voluptas ad qui quas autem, illo laborum nulla dignissimos voluptate distinctio, nemo debitis?</p>
+        <div className="container w-100 vh-200 dashboard">
+            <section className="text-start mt-3 px-3">
+                <h1>Recent Activity</h1>
+                <p>Stay connected with the latest advances in Togo's tech ecosystem.</p>
             </section>
-            <div>
-                <ResponsiveContainer>
-                    <AreaChart
-                        //data={graphData}
-                        margin={{
-                            top: 10,
-                            right: 10,
-                            left: 0,
-                            bottom: 0,
-                        }}
-                    >
-                        <defs>
-                            {/*dataKeys.map((key, index) => (
-                            <linearGradient key={`color-${key}`} id={`color-${key}`} x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor={COLORS[index % COLORS.length]} stopOpacity={0.8} />
-                                <stop offset="95%" stopColor={COLORS[index % COLORS.length]} stopOpacity={0} />
-                            </linearGradient>
-                            ))*/}
-                        </defs>
 
-                        <CartesianGrid strokeDasharray="3 3" stroke="#333" vertical={false} />
+            <div className="row p-3">
+                <div className="col-md-8 p-3">
 
-                        <XAxis
-                            dataKey="day"
-                            stroke="#666"
-                            tick={{ fill: '#888' }}
-                            tickLine={false}
-                            axisLine={false}
-                            dy={10}
-                        />
-
-                        <YAxis
-                            stroke="#666"
-                            tick={{ fill: '#888' }}
-                            tickLine={false}
-                            axisLine={false}
-                            tickFormatter={(value) => `$${value}`}
-                            width={60}
-                        />
-
-                        <Tooltip
-                            contentStyle={{
-                            backgroundColor: 'rgba(20, 20, 20, 0.95)',
-                            border: '1px solid #333',
-                            borderRadius: '8px',
-                            color: '#fff',
-                            boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
-                            }}
-                            itemStyle={{ padding: '2px 0' }}
-                            //formatter={(value: number) => [formatCurrency(value), '']}
-                            labelStyle={{ color: '#888', marginBottom: '8px' }}
-                        />
-
-                        <Legend
-                            verticalAlign="top"
-                            height={36}
-                            iconType="circle"
-                            wrapperStyle={{ paddingBottom: '20px' }}
-                        />
-
-                        {/*dataKeys.map((key, index) => (
-                            <Area
+                    <div className="activity-tabs mb-4 d-flex align-items-center gap-3 border-bottom">
+                        {tabs.map(({ key, label }) => (
+                            <button
                                 key={key}
-                                type="monotone"
-                                dataKey={key}
-                                stroke={COLORS[index % COLORS.length]}
-                                fill={`url(#color-${key})`}
-                                strokeWidth={2}
-                                name={key} // Render the full key or a mapped name if available
-                                animationDuration={1500}
-                            />
-                        ))*/}
-                    </AreaChart>
-                </ResponsiveContainer>
+                                className={`tab-btn ${activeTab === key ? 'active' : ''}`}
+                                onClick={() => setActiveTab(key)}
+                            >
+                                {label}
+                            </button>
+                        ))}
+                        <span 
+                            className="text-muted ms-auto"
+                            onClick={() => onMarkAsRead?.()}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            Mark all as read
+                        </span>
+                    </div>
+
+                    <div className="activities-list">
+                        {filteredActivities.map((activity) => (
+                            <div
+                                key={activity.id}
+                                className="activity-item d-flex gap-3 py-3 px-2 border-bottom"
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <div style={{ fontSize: '1.5em', minWidth: '40px' }}>🔔</div>
+                                <div className="flex-grow-1 d-flex align-items-start justify-content-between">
+                                    <p className="mb-0">
+                                        <span style={{ color: '#28A745' }}> {activity.title}</span><br/>
+                                        <strong>{activity.message}</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {activities.length > 10 ? <div className="text-center mt-4">
+                        <a href="#" style={{ color: '#28A745', textDecoration: 'none' }}>
+                            Load more activities...
+                        </a>
+                    </div>
+                    : ''}
+                </div>
             </div>
         </div>
     )
 }
 
-export default Activity;
+export default Activity

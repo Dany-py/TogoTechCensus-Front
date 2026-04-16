@@ -17,7 +17,6 @@ const Connection = () => {
     useEffect(() => {
         const auth = window.location.pathname
         const storage = localStorage.getItem('')
-        //const cookies = cookieStore.getAll()
         if (storage) {
             setSign(true)
         }
@@ -30,7 +29,8 @@ const Connection = () => {
         }
     }, [])
     return(
-        <div className="container-fluid vh-100 connection">
+        <div className="container-fluid vh-150 connection">
+            <div className="hero-orb orb-1" />
             <div className="vh-100 d-flex align-items-center justify-content-center">
                 {isLogin ? (<Login />) : (<Register />)}
             </div>

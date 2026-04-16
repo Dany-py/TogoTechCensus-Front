@@ -1,4 +1,17 @@
+/* ═══════════════════════════════════════════════════════════════
+   COMPONENTS.UI.CSS — Composants UI réutilisables
+   Sections :
+     1.  Carte générique (Card)
+     2.  Lien stylé (Link)
+     3.  Effet de frappe (TypeWriter)
+     4.  Formulaires
+     5.  Spinner de chargement
+═══════════════════════════════════════════════════════════════ */
 
+
+/* ─────────────────────────────────────────────
+   1. CARTE GÉNÉRIQUE
+───────────────────────────────────────────── */
 .Card {
     border: 1px #ccc solid;
     border-radius: 10px;
@@ -6,12 +19,19 @@
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+
+/* ─────────────────────────────────────────────
+   2. LIEN STYLÉ
+───────────────────────────────────────────── */
 .link {
     color: black;
     text-decoration: none;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .link:hover {
+    transform: scale(1.05);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,6 +40,73 @@
     border-radius: 10px;
     width: 5em;
     height: 2em;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
 
+@media (max-width: 576px) {
+    .link {
+        width: 4em;
+        height: 1.5em;
+    }
+}
+
+
+/* ─────────────────────────────────────────────
+   3. EFFET DE FRAPPE (TYPEWRITER)
+───────────────────────────────────────────── */
+.text-type {
+    display: inline-block;
+    white-space: pre-wrap;
+}
+
+.text-type__cursor {
+    margin-left: 0.25rem;
+    display: inline-block;
+    opacity: 1;
+}
+
+.text-type__cursor--hidden {
+    display: none;
+}
+
+
+/* ─────────────────────────────────────────────
+   4. FORMULAIRES
+───────────────────────────────────────────── */
+/* Champ requis */
+.required-sign {
+    color: red;
+}
+
+/* Fond des champs de saisie */
+.form-control {
+    background-color: #f4fefe;
+}
+
+.form-control:focus {
+    background-color: #f4fefe;
+}
+
+
+/* ─────────────────────────────────────────────
+   5. SPINNER DE CHARGEMENT
+───────────────────────────────────────────── */
+.spinner {
+    --spinner-size: 5em;
+    width: var(--spinner-size);
+    height: var(--spinner-size);
+    border: calc(var(--spinner-size) / 12) solid #dddddd;
+    border-top-color: #3498db;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: loading 0.75s linear infinite;
+}
+
+/* Variantes de taille */
+.spinner-size--small  { --spinner-size: 2em; }
+.spinner-size--medium { --spinner-size: 10em; }
+.spinner-size--large  { --spinner-size: 20em; }
+
+@keyframes loading {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(1turn); }
 }

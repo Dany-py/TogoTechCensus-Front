@@ -1,12 +1,80 @@
+/* ═══════════════════════════════════════════════════════════════
+   DASHBOARD.CSS
+   Sections :
+     1.  Conteneur principal
+     2.  Barre de navigation (Dash Nav)
+     3.  Sidebar (Marge)
+     4.  Boutons sidebar
+     5.  Carte projet (Project Card)
+     6.  Cartes du tableau de bord (Dash Card)
+     7.  Cartes latérales (Aside Card / Workspace)
+     8.  Notifications
+     9.  Graphes & utilitaires
+     10. Media queries
+═══════════════════════════════════════════════════════════════ */
 
-.marge {
-    background-color: #fffffe;
-    width: 15%;
-    position: fixed;
-    left: 0;
-    border: 1px #ccc solid;
+
+/* ─────────────────────────────────────────────
+   1. CONTENEUR PRINCIPAL
+───────────────────────────────────────────── */
+.dashboard {
+    background-color: #ffffff !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
+/* Helpers de largeur utilisés dans le dashboard */
+.w-70 {
+    width: 70% !important;
+}
+
+.w-30 {
+    width: 30% !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   2. BARRE DE NAVIGATION
+───────────────────────────────────────────── */
+#dash-nav {
+    padding: 0.5em;
+}
+
+.dash-nav {
+    border-bottom: 1px #ccc solid;
+}
+
+.dash-nav img {
+    width: 3.5em;
+    height: 3.5em;
+    margin-right: 0.3em;
+    border-radius: 100%;
+    background-color: #fffffe;
+}
+
+#dash-nav-img-1 {
+    width: 1.5em !important;
+    height: 1.5em !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   3. SIDEBAR (MARGE)
+───────────────────────────────────────────── */
+.marge {
+    background-color: #fffffe;
+    width: 16.2%;
+    position: fixed;
+    left: 0;
+    border-top: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+}
+
+
+/* ─────────────────────────────────────────────
+   4. BOUTONS SIDEBAR
+───────────────────────────────────────────── */
 .marge-btn-group {
     width: 70%;
     height: fit-content;
@@ -25,19 +93,18 @@
     justify-content: center;
 }
 
-.marge-svg {
-    width: fit-content;
-}
 .marge-btn:hover {
     width: 10em;
     height: 2.5em;
     align-content: center;
     color: #28A745;
     font-weight: bold;
-    background-color: #dff1df;
+    background-color: rgba(40, 167, 69, 0.08);
     border-radius: 10px;
+    position: relative;
 }
 
+/* État actif du bouton sidebar */
 .marge-btn-focused {
     width: 10em;
     height: 2.5em;
@@ -47,31 +114,353 @@
     justify-content: center;
     color: #28A745;
     font-weight: bold;
-    background-color: #dff1df;
+    background-color: rgba(40, 167, 69, 0.08);
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Barre de sélection verte à gauche */
+.marge-btn-focused::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #28A745;
+    border-radius: 0 4px 4px 0;
+}
+
+.marge-svg {
+    width: fit-content;
+}
+
+
+/* ─────────────────────────────────────────────
+   5. CARTE PROJET (PROJECT CARD)
+───────────────────────────────────────────── */
+.project-card {
+    display: flex;
+}
+
+.project-content {
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.project-content:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.project-icon {
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.techno {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.project {
+    position: relative;
+    display: grid;
+    justify-self: center;
+    align-items: center;
+    width: 50%;
+    height: 9em;
+    padding: 2em;
+    border: 1px #ccc solid;
     border-radius: 10px;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.project:hover {
+    transform: translateY(-5px) scale(1.02);
+    background-color: rgba(40, 167, 69, 0.04);
+    box-shadow: 0 4px 6px rgba(180, 190, 175, 0.3),
+        0 15px 25px rgba(180, 190, 175, 0.5);
+    border-color: rgba(40, 167, 69, 0.3);
+}
+
+
+/* ─────────────────────────────────────────────
+   6. CARTES DU TABLEAU DE BORD (DASH CARD)
+───────────────────────────────────────────── */
+.dash-top-project {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    align-items: stretch;
 }
 
 .dash-card {
+    align-items: flex-start;
+    justify-self: center;
+    width: 100%;
+    height: fit-content;
+    min-height: 300px;
+    padding: 2em;
+    border: 1px #ccc solid;
+    border-radius: 10px;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.dash-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background-color: rgba(40, 167, 69, 0.04);
+    box-shadow: 0 4px 6px rgba(180, 190, 175, 0.3),
+        0 15px 25px rgba(180, 190, 175, 0.5);
+    border-color: rgba(40, 167, 69, 0.3);
+}
+
+.dash-card h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    justify-content: flex-start;
+    gap: 0.5em;
+}
+
+.dash-card p {
+    flex-grow: 1;
+    margin-bottom: 1em;
+    line-height: 1.5;
+}
+
+.dash-card hr {
+    width: 100%;
+    margin: 1em 0;
+}
+
+.dash-card section {
+    width: 100%;
+}
+
+
+/* ─────────────────────────────────────────────
+   7. CARTES LATÉRALES (ASIDE / WORKSPACE)
+───────────────────────────────────────────── */
+.aside-card {
+    align-items: flex-start;
+    justify-self: center;
+    width: 100%;
+    height: fit-content;
+    background-color: rgba(40, 167, 70, 0.779);
+    padding: 2em;
+    border: 1px #ccc solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.aside-card button {
+    background-color: white;
+    color: black;
+}
+
+.workspace-aside-card {
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: fit-content;
+    padding: 2em;
+    border: 1px #ccc solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+
+.workspace-aside-span {
+    display: block;
+    height: fit-content;
+    width: 5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    background-color: rgba(180, 190, 175, 0.3);
     border: 1px #ccc solid;
     border-radius: 10px;
 }
 
+
+/* ─────────────────────────────────────────────
+   8. NOTIFICATIONS
+───────────────────────────────────────────── */
 .notification {
-    height: 60vh;
     overflow-y: auto;
+    border-radius: 10px;
+    border: 1px rgba(40, 167, 69, 0.3) solid;
+    box-shadow: inset 0 4px 6px rgba(180, 190, 175, 0.3),
+        0 15px 25px rgba(180, 190, 175, 0.5);
 }
 
 .notification-span {
     transform: scale(1);
-    transition: transform 0.5s ease-in-out, box-shadow .3s ease-in-out;
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .notification-span:hover {
     display: block;
     width: fit-content;
+    border: 1px rgba(40, 167, 69, 0.3) solid;
+    border-radius: 10px;
+    padding: 1em;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 4px 6px rgba(180, 190, 175, 0.3),
+        0 15px 25px rgba(180, 190, 175, 0.5);
+    background-color: rgba(40, 167, 69, 0.04);
+}
+
+
+/* ─────────────────────────────────────────────
+   9. GRAPHES & UTILITAIRES
+───────────────────────────────────────────── */
+.graph {
     border: 1px #ccc solid;
     border-radius: 10px;
     padding: 1em;
-    transform: scale(1.05);
-    box-shadow: 0 15px 20px rgb(180, 190, 175);
+}
+
+.form-control:focus {
+    border-color: #ced4da;
+    outline: 0;
+    box-shadow: none;
+}
+
+.textarea {
+    resize: none;
+}
+
+
+/* ─────────────────────────────────────────────
+   10. MEDIA QUERIES
+───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .marge {
+        width: 15%;
+    }
+}
+
+@media (max-width: 768px) {
+    .w-70 {
+        width: 100% !important;
+    }
+
+    .w-30 {
+        width: 100% !important;
+    }
+
+    .marge {
+        width: 20%;
+    }
+
+    .dashboard {
+        padding: 0 !important;
+    }
+
+    .dash-nav {
+        padding: 0.5em !important;
+    }
+
+    .dash-top-project {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+        gap: 1rem !important;
+    }
+
+    .dash-card {
+        min-height: 250px !important;
+        padding: 1.5em !important;
+    }
+
+    .marge-btn-group {
+        margin-bottom: 30vh;
+    }
+
+    .aside-card {
+        padding: 1.5em;
+    }
+
+    .project {
+        width: 70%;
+    }
+}
+
+@media (max-width: 576px) {
+    .marge {
+        width: 100%;
+        position: static;
+        border-top: none;
+        border-right: none;
+        border-bottom: 1px #ccc solid;
+    }
+
+    .marge-btn-group {
+        width: 100%;
+        margin-bottom: 20vh;
+    }
+
+    .marge-btn {
+        width: 100%;
+    }
+
+    .marge-btn-focused {
+        width: 100%;
+    }
+
+    #dash-nav {
+        padding: 0.5em !important;
+    }
+
+    .aside-card {
+        padding: 1em;
+    }
+
+    .project {
+        width: 100%;
+    }
+
+    .row.p-3 {
+        padding: 1rem !important;
+    }
+
+    .col-md-9 {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .col-md-3 {
+        width: 100% !important;
+        margin: 1rem 0 !important;
+    }
+
+    .dash-top-project {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        margin: 1rem 0 !important;
+    }
+
+    .dash-card {
+        min-height: auto !important;
+        padding: 1rem !important;
+    }
+
+    .dash-card h3 {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
 }

@@ -1,0 +1,96 @@
+/* ═══════════════════════════════════════════════════════════════
+   DETAILS.CSS — Page de détail d'un projet
+   Sections :
+     1.  Carte principale
+     2.  Badge de technologie
+     3.  Groupe de liens externes
+     4.  Lien externe (icône circulaire)
+     5.  Media queries
+═══════════════════════════════════════════════════════════════ */
+
+
+/* ─────────────────────────────────────────────
+   1. CARTE PRINCIPALE
+───────────────────────────────────────────── */
+.detail-card {
+    border: 1px rgba(40, 167, 69, 0.3) solid;
+    border-radius: 20px;
+    padding: 1.5em;
+    text-align: start;
+}
+
+
+/* ─────────────────────────────────────────────
+   2. BADGE DE TECHNOLOGIE
+───────────────────────────────────────────── */
+.detail-techno {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 7em;
+    padding: 0.3em;
+    border: 1px rgba(40, 167, 69, 0.3) solid;
+    border-radius: 20px;
+    color: #28A745;
+    font-weight: bold;
+    background-color: rgba(40, 167, 69, 0.08);
+}
+
+
+/* ─────────────────────────────────────────────
+   3. GROUPE DE LIENS EXTERNES
+───────────────────────────────────────────── */
+.detail-card-link-group {
+    display: flex;
+    justify-self: center;
+    justify-content: space-around;
+    width: 50%;
+}
+
+
+/* ─────────────────────────────────────────────
+   4. LIEN EXTERNE (ICÔNE CIRCULAIRE)
+───────────────────────────────────────────── */
+.detail-card-link {
+    width: 5em;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    text-decoration: none;
+    border-radius: 100%;
+    border: 1px rgba(40, 167, 69, 0.3) solid;
+}
+
+.detail-card-link:hover {
+    background-color: rgba(40, 167, 69, 0.08);
+}
+
+.detail-card-img {
+    width: 2em;
+    height: 2em;
+}
+
+
+/* ─────────────────────────────────────────────
+   5. MEDIA QUERIES
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .detail-card {
+        padding: 1em;
+        border-radius: 15px;
+    }
+    .detail-card-link-group {
+        width: 75%;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .detail-card-link-group {
+        width: 100%;
+        justify-content: center;
+    }
+}

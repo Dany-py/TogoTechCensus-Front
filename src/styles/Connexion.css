@@ -1,9 +1,25 @@
+/* ═══════════════════════════════════════════════════════════════
+   CONNEXION.CSS — Page de connexion / authentification
+   Sections :
+     1.  Fond de page
+     2.  Formulaire de connexion
+     3.  Bouton de connexion
+     4.  Images (logo OAuth, avatar utilisateur)
+     5.  Media queries
+═══════════════════════════════════════════════════════════════ */
 
+
+/* ─────────────────────────────────────────────
+   1. FOND DE PAGE
+───────────────────────────────────────────── */
 .connection {
-    background: #28A745;
-    background: linear-gradient(180deg, rgba(40, 167, 69, 1) 50%, rgba(255, 206, 0, 1) 100%);
+    background: linear-gradient(135deg, #28A745 0%, #1e5624 60%, #FFCE00 100%);
 }
 
+
+/* ─────────────────────────────────────────────
+   2. FORMULAIRE DE CONNEXION
+───────────────────────────────────────────── */
 .connection-form {
     padding: 2em;
     width: 50%;
@@ -16,21 +32,29 @@
     font-size: 1em;
 }
 
+
+/* ─────────────────────────────────────────────
+   3. BOUTON DE CONNEXION
+───────────────────────────────────────────── */
 .login-btn {
     width: 70%;
-    height: 3em;
+    height: 4em;
     background-color: transparent;
     backdrop-filter: blur(30px);
     border: 1px #ccc solid;
 }
-.login-img {
-    width: 100%;
-}
+
+
+/* ─────────────────────────────────────────────
+   4. IMAGES
+───────────────────────────────────────────── */
+/* Icône OAuth (Google, GitHub…) */
 .login-img {
     width: 2em;
     height: 2em;
 }
 
+/* Avatar de l'utilisateur connecté */
 .login-img-user {
     background-color: #fff;
     backdrop-filter: blur(30px);
@@ -41,12 +65,33 @@
     margin-right: 0.5em;
 }
 
+
+/* ─────────────────────────────────────────────
+   5. MEDIA QUERIES
+───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .connection-form { width: 65%; }
+}
+
+@media (max-width: 768px) {
+    .connection-form { width: 75%; }
+    .login-img {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
+
 @media (max-width: 576px) {
     .connection-form {
         margin: 0 !important;
         width: 90%;
     }
     .login-btn {
-        width: 90%;
+        width: 100%;
+        height: 3em;
+    }
+    .login-img-user {
+        width: 4em;
+        height: 4em;
     }
 }

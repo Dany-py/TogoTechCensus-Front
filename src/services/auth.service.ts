@@ -14,7 +14,6 @@ export async function userAuth(args: ActionFunctionArgs) {
         const clonedRequest = args.request.clone();
         const formData = await clonedRequest.formData();
         const intent = formData.get("intent");
-        console.log('Intent :', intent)
         
         if(intent === 'google') {
             const url = import.meta.env.VITE_AUTH_GOOGLE

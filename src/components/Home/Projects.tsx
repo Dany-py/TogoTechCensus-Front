@@ -1,21 +1,20 @@
-import axios from 'axios'
 import project_png from '../../assets/project.png'
 import { useState, useEffect } from 'react'
+import projectData from '../../data/project.json'
+import type { IProject } from '../../types/Project'
+import slugify from 'slugify'
 
+
+const data = projectData.results as unknown as Array<IProject>
 
 const Project = () => {
-    const project_url = import.meta.env.VITE_API_PROJECT as string
-    const url = `${project_url}?page=9`
-    const [project, setProject] = useState([])
+    const [project, setProject] = useState<Array<IProject>>([])
+    
     useEffect(() => {
-        const fecthProject = async () => {
-            const response = await axios.get(url)
-            const apiResponse = response.data
-            const projectData = apiResponse.results
-            setProject(projectData.reverse())
+        if (projectData) {
+            setProject(data)
         }
-        fecthProject()
-    }, [url])
+    }, [])
 
     return (
         <div className="container-fluid projects">
@@ -24,14 +23,27 @@ const Project = () => {
 
                 {
                     project.map((item: any) => (
-                        <div key={item.id} className="col-md-2 my-3 mx-3 card project">
+                        <a href={`project/${slugify(decodeURIComponent(item.name), {
+                            replacement: '-',
+                            remove: /[*+~.()'"!:@]/g,
+                            lower: true,
+                            strict: false,
+                            locale: 'en',
+                            trim: true
+                        })}`} key={item.id} className="col-md-2 my-3 mx-3 card" >
+                           
                             <h3 style={{
                                 textAlign: 'start'
-                            }} >
-                                <img src={project_png} className='project-icon' />
+                            }} className='d-flex align-items-center justify-content-center'>
+                                <img src={item.logo_url ? item.logo_url : project_png} className='project-icon me-3' />
                                 <strong> {item.name} </strong>
+                                <span className='d-grid'>                                        
+                                    {item.is_verified && (
+                                        <span className="badge bg-success mx-2">Verified</span>
+                                    )}
+                                </span>
                             </h3>
-                            <p> {item.short_description} </p>
+                            <p> {item.description.split('. ')[0]} </p> <p style={{color:'#28A745'}}><strong><i>click for more...</i></strong></p>
 
                             <section className='d-flex justify-content-around'>
                                 {item.technologies && item.technologies.map((tech: string, index: number) => (
@@ -39,8 +51,8 @@ const Project = () => {
                                 ))}
                             </section>
 
-                            <hr />
-
+                            {/*<hr />
+                            
                             <section className='d-flex justify-content-between'>
                                 <button>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,8 +71,8 @@ const Project = () => {
                                     </svg>
                                     Like
                                 </button>
-                            </section>
-                        </div>
+                            </section>*/}
+                        </a>
                     ))
                 }
             </div>
