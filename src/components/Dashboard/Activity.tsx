@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import '../../styles/Activity.css'
-import { apiClient } from '../../services/csrf.service'
 import axios from 'axios'
 
 interface INotification {
@@ -38,7 +37,7 @@ const Activity = ({ onMarkAsRead }: ActivityProps) => {
         const ws = new WebSocket(`${wsUrl}ws/notifications/`)
 
         ws.onmessage = (event) => {
-            const { type, title, message, notification_type } = JSON.parse(event.data) as INotification
+            const { title, message, notification_type } = JSON.parse(event.data) as INotification
             console.log('Notification type :', notification_type)
             console.log('Message de notification :', message)
             setActivities(prev => [
