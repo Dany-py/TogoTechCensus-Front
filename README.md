@@ -209,6 +209,6 @@ src/
 
 ---
 
-## 📝 Licence
+## Contribution
 
-Ce projet est privé. Tous droits réservés.
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request.
