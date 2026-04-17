@@ -9,6 +9,7 @@ import Explore from './pages/Explore';
 import Terms from './pages/TS';
 import slugify from 'slugify';
 import Privacy from './pages/Privacy';
+import { initCSRF } from './services/csrf.service'
 import { dashboardLoader } from './services/dashboard.loader.service';
 import { Details } from './pages/Details';
 import Contact from './pages/Contact';
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home/>,
+    loader: initCSRF,
     errorElement: <ErrorPage/>
   },
   {
