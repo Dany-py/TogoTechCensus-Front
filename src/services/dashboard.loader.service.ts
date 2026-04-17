@@ -13,6 +13,7 @@ export const dashboardLoader = async () => {
         }
 
         const userData = response.data;
+        console.log('User data :', userData)
         localStorage.setItem('user', JSON.stringify(userData));
         
     } catch (error) {
