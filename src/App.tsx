@@ -29,8 +29,59 @@ const slugProject = projectRaw ? slugify(decodeURIComponent(projectRaw), {
     trim: true
 }) : '';
 
-const router = createBrowserRouter([  
+const router = createBrowserRouter([
   {
+    path: "/",
+    loader: initCSRF,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,         // remplace path: "/"
+        element: <Home />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "explore",
+        element: <Explore />,
+      },
+      {
+        path: `project/${slugProject}`,
+        element: <Details />,
+      },
+      {
+        path: "terms",
+        element: <Terms />,
+      },
+      {
+        path: "privacy",
+        element: <Privacy />,
+      },
+      {
+        path: "signin/",
+        element: <Connection />,
+        action: userAuth,
+      },
+      {
+        path: "signup/",
+        element: <Connection />,
+        action: userAuth,
+      },
+      {
+        path: "dashboard/",
+        element: <Dashboard />,
+        action: dashboardAction,
+        loader: dashboardLoader,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
+      },
+    ],
+  },
+  {/*
     path: "/",
     element: <Home/>,
     loader: initCSRF,
@@ -81,7 +132,7 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <ErrorPage />
-  }
+  */}
 ])
 
 function App() {
