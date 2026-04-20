@@ -9,6 +9,7 @@ export const dashboardLoader = async () => {
         
         // Vérifiez si la donnée existe réellement avant de stocker
         if (!response.data) {
+            console.log('Response fetch user data :', response.data)
             throw new Error("No user data");
         }
 
