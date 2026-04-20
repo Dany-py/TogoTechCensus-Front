@@ -25,12 +25,15 @@ export function getCookie(name: string): string {
 }
 
 export async function initCSRF() {
+    const url = import.meta.env.VITE_API_CSRF as string;
+    if (!url) throw new Error('VITE_API_CSRF is missing in .env');
+    
     try {
-        const url = import.meta.env.VITE_API_CSRF as string
-        if(!url) throw new Error('VITE_API_CSRF is missing in .env')
-        const response = await apiClient.get(url)
-        console.log('Response csrf :', response.data)
+        const response = await apiClient.get(url);
+        console.log('Response csrf :', response.data);
+        return response.data;
     } catch (error) {
-        console.log('Error :', error)
+        console.log('Error :', error);
+        throw error;
     }
 }
