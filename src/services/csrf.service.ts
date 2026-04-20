@@ -26,15 +26,10 @@ export function getCookie(name: string): string {
 
 export async function initCSRF() {
     const url = import.meta.env.VITE_API_CSRF as string;
-    if (!url) throw new Error('VITE_API_CSRF is missing in .env');
+    const response = await apiClient.get(url);
+    const token = response.data.csrfToken; // ← token dans le body
     
-    try {
-        const response = await apiClient.get(url);
-        console.log('Response csrf :', response.data);
-        console.log('Cookie :', document.cookie)
-        return response.data;
-    } catch (error) {
-        console.log('Error :', error);
-        throw error;
-    }
+    // Stocker dans axios pour toutes les requêtes suivantes
+    apiClient.defaults.headers.common['X-CSRFToken'] = token;
+    return token;
 }
