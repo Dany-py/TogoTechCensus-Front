@@ -48,6 +48,7 @@ export const Details = () => {
                 const projectData = response.data.results
 
                 if (!projectData || projectData.length === 0) {
+                    console.log('Donné reçu :', projectData)
                     navigate("/?message=Une erreur est survenue.")
                     return
                 }

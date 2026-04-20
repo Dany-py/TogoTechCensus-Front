@@ -73,7 +73,7 @@ const router = createBrowserRouter([
         path: "dashboard/",
         element: <Dashboard />,
         action: dashboardAction,
-        loader: dashboardLoader,
+        //loader: dashboardLoader,
       },
       {
         path: "*",
