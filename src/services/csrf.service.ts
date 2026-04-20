@@ -18,16 +18,9 @@ apiClient.interceptors.request.use((config) => {
 });
 
 export function getCookie(name: string): string {
-  console.log('Cookies :', document.cookie)
-  const value = `; ${document.cookie}`;
-  console.log('Cookies du navigateur :', value)
-  const parts = value.split(`; ${name}=`);
-  console.log('Cookie splited :', parts)
-  if (parts.length === 2) {
-    const returnCookie = parts.pop()?.split(';').shift()
-    console.log('Cookie value to return :', returnCookie)
-    return returnCookie as unknown as string
-  } else return ''
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    console.log('Cookie :', match)
+    return match ? match[2] : '';
 }
 
 export async function initCSRF() {
