@@ -31,6 +31,7 @@ export async function initCSRF() {
     try {
         const response = await apiClient.get(url);
         console.log('Response csrf :', response.data);
+        console.log('Cookie :', document.cookie)
         return response.data;
     } catch (error) {
         console.log('Error :', error);
