@@ -18,9 +18,7 @@ apiClient.interceptors.request.use((config) => {
 });
 
 export function getCookie(name: string): string {
-    console.log('Document cookie :', document.cookie)
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    console.log('Cookie :', match)
     return match ? match[2] : '';
 }
 
@@ -28,8 +26,7 @@ export async function initCSRF() {
     const url = import.meta.env.VITE_API_CSRF as string;
     const response = await apiClient.get(url);
     const token = response.data.csrfToken;
-    console.log('Token :', token)
-    document.cookie = token
+    document.cookie = `csrftoken=${token}`
     
     // Stocker dans axios pour toutes les requêtes suivantes
     apiClient.defaults.headers.common['X-CSRFToken'] = token;

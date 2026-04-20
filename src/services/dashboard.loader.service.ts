@@ -6,6 +6,7 @@ export const dashboardLoader = async () => {
     
     try {
         const response = await apiClient.get(url);
+        console.log('Response user.me :', response)
         
         // Vérifiez si la donnée existe réellement avant de stocker
         if (!response.data) {
