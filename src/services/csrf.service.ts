@@ -18,6 +18,7 @@ apiClient.interceptors.request.use((config) => {
 });
 
 export function getCookie(name: string): string {
+  console.log('Cookies :', document.cookie)
   const value = `; ${document.cookie}`;
   console.log('Cookies du navigateur :', value)
   const parts = value.split(`; ${name}=`);
