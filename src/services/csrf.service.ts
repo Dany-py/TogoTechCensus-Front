@@ -18,6 +18,7 @@ apiClient.interceptors.request.use((config) => {
 });
 
 export function getCookie(name: string): string {
+    console.log('Document cookie :', document.cookie)
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     console.log('Cookie :', match)
     return match ? match[2] : '';
