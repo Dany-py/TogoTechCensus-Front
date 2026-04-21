@@ -25,7 +25,7 @@ export function getCookie(name: string): string {
 export async function initCSRF() {
     const url = import.meta.env.VITE_API_CSRF as string;
     const response = await apiClient.get(url);
-    console.log('Document cookie :', document.cookie)
+    console.log('Document cookie :', response.data)
     const token = response.data.csrfToken;
     document.cookie = `csrftoken=${token}`
     console.log('New document cookie :', document.cookie)
