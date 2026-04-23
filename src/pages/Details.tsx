@@ -10,7 +10,6 @@ import link from '../assets/lien.png';
 import github from '../assets/github.png';
 import linkedin from '../assets/linkedin.png'
 import twitter from '../assets/twitter.png';
-import Footer from '../components/Home/Footer';
 import '../styles/Details.css'
 
 const formatExternalUrl = (url: string): string => {

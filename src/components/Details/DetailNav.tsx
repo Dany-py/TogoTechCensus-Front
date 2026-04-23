@@ -1,6 +1,5 @@
 
 import "../../styles/Home.css";
-import { useState } from 'react';
 
 interface DetailNavProps {
     title: string,

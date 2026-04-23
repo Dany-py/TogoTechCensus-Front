@@ -37,6 +37,15 @@ const Workspace = () => {
     const createUpdate = () => {
         setUpdateProject(true)
     }
+    const archiveProject = async (id: number) => {
+        const archivePayload = {
+            id: id,
+            is_archived: true
+        }
+        const archivedUrl = url + `${id}/`
+        await apiClient.patch(archivedUrl, archivePayload)
+        return { success: true }
+    }
     const showDetail = (id: number) => {
         // Si le même projet est cliqué, fermer le détail
         if (selectedProjectId === id) {
@@ -161,7 +170,12 @@ const Workspace = () => {
                                                         className='project-icon' 
                                                         style={{ width: '60px', height: '60px', borderRadius: '8px', objectFit: 'cover' }}
                                                     />
-                                                    <span className='badge bg-light text-dark' style={{ fontSize: '12px' }}> {item.is_verified === true ? 'Published': 'Unpublished'} </span>
+                                                    {item.is_archived === true ? (
+                                                        <span className='badge bg-light text-dark' style={{ fontSize: '12px' }}>Archived</span>
+                                                    ) : (
+                                                        <span className='badge bg-light text-dark' style={{ fontSize: '12px' }}> {item.is_verified === true ? 'Published': 'Unpublished'} </span>
+                                                    )}
+
                                                 </div>
 
                                                 {/* Titre et type */}
@@ -290,19 +304,23 @@ const Workspace = () => {
                                     onClose={() =>  setUpdateProject(false)}
                                     /> : ''
                                 }
-                                <button 
-                                    className="w-100 mt-2"
-                                    onClick={createUpdate}
-                                >
-                                    Update
-                                </button>
-
-                                <button 
-                                    className="w-100 mt-2"
-                                    onClick={createUpdate}
-                                >
-                                    Archive
-                                </button>
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <button 
+                                        className="w-100 mt-2 mx-1"
+                                        onClick={createUpdate}
+                                    >
+                                        Update
+                                    </button>
+                                    {
+                                        project.is_archived ? '' : 
+                                        <button 
+                                            className="w-100 mt-2 mx-1"
+                                            onClick={() => archiveProject(project.id)}
+                                        >
+                                            Archive
+                                        </button>
+                                    }
+                                </div>
                             </aside>
                         </div>
                     ) : ''

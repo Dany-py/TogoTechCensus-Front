@@ -2,7 +2,7 @@ import project_png from '../../assets/project.png'
 import { useState, useEffect } from 'react';
 import type { IProject } from '../../types/Project'
 import Modal from './Modal';
-import Submission from './Submitssion';
+import Submission from './Submission';
 
 import axios from 'axios'
 
