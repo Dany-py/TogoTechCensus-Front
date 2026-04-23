@@ -3,6 +3,7 @@ import type { ActionFunctionArgs } from 'react-router-dom';
 import { AxiosError } from 'axios'
 import type { ProjectCreate } from '../types/Project';
 import { apiClient } from './csrf.service';
+import { SubmissionError } from '../errors/submission.error';
 
 /**
  * Fonction utilitaire pour nettoyer un objet en supprimant les valeurs vides
@@ -25,7 +26,7 @@ async function projectSubmissionAction( {request}: ActionFunctionArgs ) {
         const type = formData.get('type') as string
         const description = formData.get('description') as string
         const author = formData.get('author') as string
-        const categorie = formData.get('categorie') as string
+        const categorie = formData.get('categories') as string
         const publics = formData.get('public') as string
         const needs = formData.get('needs') as string
         const email = formData.get('email') as string
@@ -34,7 +35,7 @@ async function projectSubmissionAction( {request}: ActionFunctionArgs ) {
         const twitter = formData.get('twitter') as string
         const linkedin = formData.get('linkedin') as string
         const address = (formData.get('address') ? formData.get('address') : '') as string
-        const foundedValue = formData.get('founded') as string
+        const foundedValue = formData.get('foundedAt') as string
         const founded_date = foundedValue ? foundedValue.replace('/', '-') : ''
         const founded = founded_date.replace('/', '-')
 
@@ -69,6 +70,10 @@ async function projectSubmissionAction( {request}: ActionFunctionArgs ) {
             address : address,
             founded_date : founded,
         }
+        if (!payload.name || !payload.description || !payload.categories || !payload.needs || !payload.technologies || !payload.founded_date){
+            console.log('Payload envoyé :', payload)
+            throw new SubmissionError(500, 'Fields with * are required !')
+        }
         //console.log('Payload envoyé :', payload)
         await apiClient.post(url, payload)
         //console.log('Axios response :', response)
@@ -80,9 +85,9 @@ async function projectSubmissionAction( {request}: ActionFunctionArgs ) {
             //console.log('Error :', error)
             //console.log('Error message :', error.response?.data.name[0])
             return { error: error.response?.data.name[0]}
-        } else {
-            //console.error(error);
-            return { "error": "Error 500 : Internal Error Server." }
+        } else if (error instanceof SubmissionError) {
+            console.error(error);
+            return { error: error.message }
         }
     }
 }
@@ -106,7 +111,7 @@ async function projectUpdateAction( {request}: ActionFunctionArgs ) {
         const twitter = formData.get('twitter') as string
         const linkedin = formData.get('linkedin') as string
         const address = formData.get('address') as string
-        const foundedValue = formData.get('founded') as string
+        const foundedValue = formData.get('foundedAt') as string
         const founded_date = foundedValue ? foundedValue.replace('/', '-') : ''
         const founded = founded_date.replace('/', '-')
 

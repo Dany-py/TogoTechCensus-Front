@@ -15,16 +15,17 @@ interface UserData {
 interface DashNavbarProps {
     hasUnreadNotifications?: boolean;
     onNotification?: (hasUnread: boolean) => void;
+    isMenuOpen?: boolean;
+    onMenuToggle?: (isOpen: boolean) => void;
 }
 
-function DashNavbar({ hasUnreadNotifications = false, onNotification }: DashNavbarProps) {
+function DashNavbar({ hasUnreadNotifications = false, onNotification, isMenuOpen = false, onMenuToggle }: DashNavbarProps) {
 
     const defaultUser: UserData = {
         name: 'John Doe',
         avatar_url: userLogo,
         role: 'User'
     }
-    const [open, setOpen] = useState(false)
     const [isAuth, setAuth] = useState(false)
     const [user, setUser] = useState<UserData>(defaultUser)
     const [isSign, setSign] = useState(false)
@@ -74,12 +75,12 @@ function DashNavbar({ hasUnreadNotifications = false, onNotification }: DashNavb
             <button
                 className = "navbar-toggler"
                 type = "button"
-                onClick = {() => setOpen(!open)}
+                onClick = {() => onMenuToggle && onMenuToggle(!isMenuOpen)}
             >
                 <span className = "navbar-toggler-icon"></span>
             </button>
             { isSign && isAuth ? (
-            <div className = {`collapse navbar-collapse ${open ? "show" : ""}`}>
+            <div className = {`collapse navbar-collapse ${isMenuOpen ? "show" : ""}`}>
                 <h3  style={{color:'#28a745', margin:'0'}}><img alt = "logo" src ={logo} id="dash-nav-img-1"/>TogoTechCensus</h3>
                 {
                     user ? (

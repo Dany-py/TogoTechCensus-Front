@@ -10,6 +10,7 @@ import { useState } from 'react';
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState<'home' | 'projects' | 'activities'>('home');
     const [hasUnreadNotifications, setHasUnreadNotifications] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const setTab = (tab: 'home' | 'projects' | 'activities') => {
         setActiveTab(tab);
@@ -27,15 +28,16 @@ const Dashboard = () => {
 
     return (
         <div className="container-fluid w-100 h-500 p-0">
-            <Navbar hasUnreadNotifications={hasUnreadNotifications} onNotification={setHasUnreadNotifications}/>
+            <Navbar hasUnreadNotifications={hasUnreadNotifications} onNotification={setHasUnreadNotifications} isMenuOpen={isMenuOpen} onMenuToggle={setIsMenuOpen}/>
             <div className="row w-100 vh-100">
                 <div className="col-md-2 px-0 ">
                     <Margin className="container-fluid vh-100 marge"
                         activeTab={activeTab}
                         onTabChange={setTab}
+                        isMenuOpen={isMenuOpen}
                     />
                 </div>
-                <div className="col-md-10 px-0 content">
+                <div className="col-md-10 content">
                     {activeTab === 'home' &&
                         <Home />
                     }

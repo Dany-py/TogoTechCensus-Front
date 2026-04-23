@@ -9,7 +9,8 @@ import TitlePage from "../utils/Title";
 import link from '../assets/lien.png';
 import github from '../assets/github.png';
 import linkedin from '../assets/linkedin.png'
-import twitter from '../assets/twitter.png'
+import twitter from '../assets/twitter.png';
+import Footer from '../components/Home/Footer';
 import '../styles/Details.css'
 
 const formatExternalUrl = (url: string): string => {
@@ -45,9 +46,9 @@ export const Details = () => {
         const fetchDetails = async () => {
             try {
                 const response = await apiClient.get(apiUrl)
-                const projectData = response.data.results
+                const projectData = response.data
 
-                if (!projectData || projectData.length === 0) {
+                if (!projectData) {
                     console.log('Donné reçu :', projectData)
                     navigate("/?message=Une erreur est survenue.")
                     return
@@ -65,8 +66,8 @@ export const Details = () => {
 
     if (!detail) {
         return (
-            <h1 style={{ color: '#28A745' }}>
-                <strong><i>Loading</i></strong>
+            <h1 style={{ color: '#28A745', marginTop:'5em' }}>
+                <strong><i>Loading...</i></strong>
             </h1>
         )
     }
@@ -84,7 +85,7 @@ export const Details = () => {
                 />
 
                 {/* MAIN CONTENT */}
-                <div className="row vh-70 p-5">
+                <div className="row vh-70 detail">
                     
                     {/* LEFT SECTION - PROJECT INFO */}
                     <div className="col-md-9 mx-5">

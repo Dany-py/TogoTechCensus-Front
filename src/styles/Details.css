@@ -12,6 +12,16 @@
 /* ─────────────────────────────────────────────
    1. CARTE PRINCIPALE
 ───────────────────────────────────────────── */
+.detail {
+    padding: 3em;
+}
+
+.detail-navbar {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
 .detail-card {
     border: 1px rgba(40, 167, 69, 0.3) solid;
     border-radius: 20px;
@@ -92,5 +102,13 @@
     .detail-card-link-group {
         width: 100%;
         justify-content: center;
+    }
+    .detail-navbar-element {
+        margin: 0.5em;
+    }
+    .detail {
+        padding: 0;
+        justify-content: center;
+        margin-bottom: 2em;
     }
 }

@@ -39,7 +39,11 @@ const Dashboard = () => {
         fetchStats()
         fetchFeaturedProject()
     }, [url])
-    if (data ?. success ) setProject(false)
+    useEffect(() => {
+        if (data?.success) {
+            setProject(false)
+        }
+    }, [data?.success])
     return (
         <div className="container w-100 vh-500 dashboard">
             <section className="text-start mt-3 px-3">

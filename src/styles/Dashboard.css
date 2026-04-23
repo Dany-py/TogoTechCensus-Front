@@ -81,7 +81,7 @@
     display: grid;
     justify-self: center;
     justify-content: center;
-    margin-bottom: 50vh;
+    margin-bottom: 30vh;
 }
 
 .marge-btn {
@@ -401,12 +401,28 @@
 }
 
 @media (max-width: 576px) {
+    .dashboard {
+        padding: 2em;
+    }
     .marge {
         width: 100%;
         position: static;
         border-top: none;
         border-right: none;
         border-bottom: 1px #ccc solid;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+    }
+
+    .margin-closed {
+        max-height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .margin-open {
+        max-height: 500px !important;
+        overflow: visible !important;
     }
 
     .marge-btn-group {

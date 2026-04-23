@@ -1,10 +1,9 @@
 
 import { apiClient } from '../../services/csrf.service';
-import type { IProject } from '../../types/Project';
+import type { IProject, Technologies } from '../../types/Project';
 import project_png from '../../assets/project.png';
 import { useState, useEffect } from 'react';
 import Submission from './Submission';
-import Update from './Update';
 import Modal from './Modal';
 import axios from 'axios';
 
@@ -180,9 +179,9 @@ const Workspace = () => {
 
                                                 {/* Technologies */}
                                                 <div className='d-flex flex-wrap gap-2 mb-3'>
-                                                    {item.technologies && item.technologies.slice(0, 3).map((tech: string, index: number) => (
+                                                    {item.technologies && item.technologies.slice(0, 3).map((tech: Technologies, index: number) => (
                                                         <span key={index} className='badge bg-light text-secondary' style={{ fontSize: '11px' }}>
-                                                            {tech.toUpperCase()}
+                                                            {tech.name.toUpperCase()}
                                                         </span>
                                                     ))}
                                                 </div>
@@ -287,7 +286,7 @@ const Workspace = () => {
 
                                 {/* Action Button */}
                                 { updateProject ? <Modal
-                                    component={<Update id={project.id} />}
+                                    component={<Submission id={project.id} onSuccess={() => setUpdateProject(!updateProject)} />}
                                     onClose={() =>  setUpdateProject(false)}
                                     /> : ''
                                 }

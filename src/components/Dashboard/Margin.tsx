@@ -3,15 +3,19 @@ import type { MarginProps } from "../../types/Margin.ts";
 import '../../styles/Dashboard.css'
 
 
-const Margin = ({ className, activeTab, onTabChange }: MarginProps) => {
+const Margin = ({ className, activeTab, onTabChange, isMenuOpen }: MarginProps & { isMenuOpen?: boolean }) => {
+
+    const handleTabChange = (tab: 'home' | 'projects' | 'activities') => {
+        onTabChange(tab);
+    };
 
     return (
-        <div className={className} >
+        <div className={`${className} ${isMenuOpen ? 'margin-open' : 'margin-closed'}`} >
 
             <h3 className="mt-3">Navigation</h3>
             <div className="marge-btn-group">
 
-                <div onClick={() => onTabChange('home')} className={activeTab === 'home' ? "mt-2 marge-btn-focused" : "mt-2 marge-btn"} >
+                <div onClick={() => handleTabChange('home')} className={activeTab === 'home' ? "mt-2 marge-btn-focused" : "mt-2 marge-btn"} >
 
                     <div>
                         <svg width="24" height="24" viewBox="0 0 100 100" fill="#dff1df" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +32,7 @@ const Margin = ({ className, activeTab, onTabChange }: MarginProps) => {
                     <br />
                 </div>
 
-                <div onClick={() => onTabChange('projects')} className={activeTab === 'projects' ? "mt-2 marge-btn-focused" : "mt-2 marge-btn"}>
+                <div onClick={() => handleTabChange('projects')} className={activeTab === 'projects' ? "mt-2 marge-btn-focused" : "mt-2 marge-btn"}>
 
                     <div >
                         <svg width="24" height="24" viewBox="0 0 160 128" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +61,7 @@ const Margin = ({ className, activeTab, onTabChange }: MarginProps) => {
                     <br />
                 </div>
 
-                <div onClick={() => onTabChange('activities')} className={activeTab === 'activities' ? "mt-2 marge-btn-focused" : "mt-2 marge-btn"}>
+                <div onClick={() => handleTabChange('activities')} className={activeTab === 'activities' ? "mt-2 marge-btn-focused" : "mt-2 marge-btn"}>
                     <div>
                         <svg width="24" height="24" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -80,9 +84,15 @@ const Margin = ({ className, activeTab, onTabChange }: MarginProps) => {
                     textDecoration: 'none',
                     color: '#59b663',
                     marginTop: '7em'
-                }}><strong>support@togotechcensus.com</strong></a>
-                <a href='/terms'>Terms</a>
-                <a href='/policy'>Policy</a>
+                }}><strong>support@togotech<br/>census.com</strong></a>
+                <a href='/terms' target="_blank" style={{
+                    textDecoration: 'none',
+                    color: '#59b663',
+                }} >Terms</a>
+                <a href='/policy' target="_blank" style={{
+                    textDecoration: 'none',
+                    color: '#59b663',
+                }} >Policy</a>
             </div>
         </div>
     )

@@ -6,7 +6,6 @@ export const dashboardLoader = async () => {
     
     try {
         const response = await apiClient.get(url);
-        console.log('Response user.me :', response)
         
         // Vérifiez si la donnée existe réellement avant de stocker
         if (!response.data) {
@@ -15,7 +14,6 @@ export const dashboardLoader = async () => {
         }
 
         const userData = response.data;
-        console.log('User data :', userData)
         localStorage.setItem('user', JSON.stringify(userData));
         return response.data
         

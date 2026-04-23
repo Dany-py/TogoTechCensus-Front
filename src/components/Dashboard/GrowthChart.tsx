@@ -19,23 +19,23 @@ const GrowthChart = () => {
   const [view, setView] = useState<'weekly' | 'monthly'>('weekly');
 
   const weeklyData: ChartData[] = [
-    { week: 'S1', projects: 5 },
-    { week: 'S2', projects: 13 },
-    { week: 'S3', projects: 10  },
-    { week: 'S4', projects: 3  },
-    { week: 'S5', projects: 9  },
-    { week: 'S6', projects: 7  },
-    { week: 'S7', projects: 5  },
-    { week: 'S8', projects: 1  },
-    { week: 'S9', projects: 10  },
-    { week: 'S10', projects: 15  },
-    { week: 'S11', projects: 12  },
-    { week: 'S12', projects: 8  },
+    { week: 'W1', projects: 5 },
+    { week: 'W2', projects: 13 },
+    { week: 'W3', projects: 10  },
+    { week: 'W4', projects: 3  },
+    { week: 'W5', projects: 9  },
+    { week: 'W6', projects: 7  },
+    { week: 'W7', projects: 5  },
+    { week: 'W8', projects: 1  },
+    { week: 'W9', projects: 10  },
+    { week: 'W10', projects: 15  },
+    { week: 'W11', projects: 12  },
+    { week: 'W12', projects: 8  },
   ];
 
   const monthlyData: ChartData[] = [
     { week: 'Jan', projects: 25 },
-    { week: 'Fév', projects: 40 },
+    { week: 'Fev', projects: 40 },
     { week: 'Mar', projects: 55 },
   ];
 
@@ -46,12 +46,12 @@ const GrowthChart = () => {
       <div className="d-flex align-items-center justify-content-between mb-4">
         <div>
           <h3 className="mb-1">
-            <strong>Tendances de Croissance</strong>
+            <strong>Growth Trends</strong>
           </h3>
           <p className="text-muted mb-0">
             {view === 'weekly'
-              ? 'Evolution des projets et startups sur les 12 dernières semaines'
-              : 'Evolution des projets et startups sur les 3 derniers mois'}
+              ? 'Trends in projects and startups over the past 12 weeks'
+              : 'Trends in projects and startups over the past 3 months'}
           </p>
         </div>
         <div className="btn-group" role="group">
@@ -60,14 +60,14 @@ const GrowthChart = () => {
             className={`btn btn-sm ${view === 'weekly' ? 'btn-success' : 'btn-outline-secondary'}`}
             onClick={() => setView('weekly')}
           >
-            Hebdomadaire
+            Weekly
           </button>
           <button
             type="button"
             className={`btn btn-sm ${view === 'monthly' ? 'btn-success' : 'btn-outline-secondary'}`}
             onClick={() => setView('monthly')}
           >
-            Mensuel
+            Monthly
           </button>
         </div>
       </div>
@@ -94,7 +94,7 @@ const GrowthChart = () => {
             dataKey="projects"
             stroke="#28A745"
             strokeWidth={3}
-            name="Nouveaux Projets"
+            name="New Projects"
             dot={false}
             isAnimationActive={true}
             fill="#28A745"
