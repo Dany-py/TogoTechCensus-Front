@@ -103,8 +103,7 @@ const Explore = () => {
                     </h1>
 
                     <p style={{ fontSize: "1.1rem", maxWidth: "600px", margin: "0 auto", lineHeight: "1.6", opacity: "0.9" }}>
-                        Your privacy is important to us. This page details how TogoTechCensus 
-                        manages your personal information.
+                        Explore the data from TogoTechCensus to understand the trends, identify opportunities, and visualize the future of our digital ecosystem.
                     </p>
                 </div>
                 <div className="hero-orb orb-1" />
