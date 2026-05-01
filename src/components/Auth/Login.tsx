@@ -41,7 +41,7 @@ const Login = () => {
                     style={{
                         textDecoration: 'none',
                         color: 'white',
-                        backgroundColor: '#28a745',
+                        backgroundColor: '#52B878',
                         width: '7em',
                         height: '2em',
                         borderRadius: '10px',

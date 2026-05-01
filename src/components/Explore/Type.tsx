@@ -30,10 +30,10 @@ const Types = ({ value, onChange }: TypesProps) => {
             >
             <option value="">Type...</option>
             {types.map((type) => (
-                <option style = {{
-                background: 'transparent',
-                }}
-                key={type.code} value={type.name}>
+                <option 
+                key={type.code} 
+                value={type.name}
+                >
                 {type.name}
                 </option>
             ))}

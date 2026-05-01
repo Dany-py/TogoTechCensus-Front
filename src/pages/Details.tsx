@@ -65,7 +65,7 @@ export const Details = () => {
 
     if (!detail) {
         return (
-            <h1 style={{ color: '#28A745', marginTop:'5em' }}>
+            <h1 style={{ color: '#52B878', marginTop:'5em' }}>
                 <strong><i>Loading...</i></strong>
             </h1>
         )
@@ -90,13 +90,13 @@ export const Details = () => {
                     <div className="col-md-9 mx-5">
                         {/* About Section */}
                         <section className="detail-card">
-                            <h3>About {detail.name}</h3>
+                            <h3 className="text-decoration-underline">About {detail.name}</h3>
                             <p>{detail.description}</p>
                         </section>
 
                         
                         <section className="detail-card my-3">
-                            <h3>Technologies</h3>
+                            <h3 className="text-decoration-underline">Technologies</h3>
                             <span className="detail-card-link-group text-center">
                                 {Array.isArray(detail.technologies) && detail.technologies.map((tech: any, index: number) => (
                                     <span key={index} className='techno'> {typeof tech === 'string' ? tech : tech.name} </span>
@@ -161,7 +161,7 @@ export const Details = () => {
                                 {Array.isArray(detail.authors) &&
                                     detail.authors.map((author: any) => (
                                         <li key={author.id}>
-                                            {author.name ? author.name : 'Unknown'}
+                                            {author.name === 'owner' ? detail.name + ' dev team' : author.name}
                                         </li>
                                     ))}
                             </ul>

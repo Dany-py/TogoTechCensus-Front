@@ -361,7 +361,7 @@ export default function MultiStepSubmission({ id, onSuccess }: MultiStepSubmissi
           --border:      #c8e6d0;
           --text:        #173320;
           --muted:       #5f8a6b;
-          --accent:      #28A745;
+          --accent:      #52B878;
           --accent-dark: #1e7e34;
           --accent-pale: rgba(40,167,69,0.09);
           --input-bg:    #f6fbf7;

@@ -23,7 +23,7 @@
 }
 
 .detail-card {
-    border: 1px rgba(40, 167, 69, 0.3) solid;
+    border: 1px rgba(82, 184, 120, 0.3) solid;
     border-radius: 20px;
     padding: 1.5em;
     text-align: start;
@@ -39,11 +39,11 @@
     align-items: center;
     width: 7em;
     padding: 0.3em;
-    border: 1px rgba(40, 167, 69, 0.3) solid;
+    border: 1px rgba(82, 184, 120, 0.3) solid;
     border-radius: 20px;
-    color: #28A745;
+    color: #52B878;
     font-weight: bold;
-    background-color: rgba(40, 167, 69, 0.08);
+    background-color: rgba(82, 184, 120, 0.08);
 }
 
 
@@ -70,11 +70,11 @@
     padding: 0.5em;
     text-decoration: none;
     border-radius: 100%;
-    border: 1px rgba(40, 167, 69, 0.3) solid;
+    border: 1px rgba(82, 184, 120, 0.3) solid;
 }
 
 .detail-card-link:hover {
-    background-color: rgba(40, 167, 69, 0.08);
+    background-color: rgba(82, 184, 120, 0.08);
 }
 
 .detail-card-img {

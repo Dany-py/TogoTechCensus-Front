@@ -92,12 +92,12 @@ const GrowthChart = () => {
           <Area
             type="natural"
             dataKey="projects"
-            stroke="#28A745"
+            stroke="#52B878"
             strokeWidth={3}
             name="New Projects"
             dot={false}
             isAnimationActive={true}
-            fill="#28A745"
+            fill="#52B878"
             fillOpacity={0.1}
           />
         </AreaChart>

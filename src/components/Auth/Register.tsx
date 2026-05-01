@@ -40,7 +40,7 @@ const Register = () => {
                 <a className='ms-3 d-flex align-items-center justify-content-center' href='/SignIn' 
                     style={{textDecoration:'none',
                         color: 'white',
-                        backgroundColor: '#28a745',
+                        backgroundColor: '#52B878',
                         width: '7em',
                         height: '2em',
                         borderRadius: '10px',

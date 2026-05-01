@@ -81,7 +81,13 @@ function DashNavbar({ hasUnreadNotifications = false, onNotification, isMenuOpen
             </button>
             { isSign && isAuth ? (
             <div className = {`collapse navbar-collapse ${isMenuOpen ? "show" : ""}`}>
-                <h3  style={{color:'#28a745', margin:'0'}}><img alt = "logo" src ={logo} id="dash-nav-img-1"/>TogoTechCensus</h3>
+                {/*<h3  style={{color:'#52B878', margin:'0'}}><img alt = "logo" src ={logo} id="dash-nav-img-1"/>TogoTechCensus</h3>*/}
+                <a style={{
+                    textDecoration: 'none',
+                    fontSize: '2em',
+                    margin:'0',
+                    color:'#52B878'}} href= "/" ><img alt = "logo" src ={logo} id="dash-nav-img-1" />TogoTechCensus
+                </a>
                 {
                     user ? (
                         <div className="navbar-nav mb-2 mb-lg-0 ms-auto">

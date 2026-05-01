@@ -12,8 +12,8 @@ const ErrorPage = () => {
             <Navbar />
             
             <div className="container flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center my-5">
-                <h1 style={{ fontSize: "6em", color: "#ffce00", marginBottom: "0" }}>Oops!</h1>
-                <h2 style={{ color: "#28a745", marginBottom: "20px" }}>Something went wrong.</h2>
+                <h1 style={{ fontSize: "6em", color: "#F0D574", marginBottom: "0" }}>Oops!</h1>
+                <h2 style={{ color: "#52B878", marginBottom: "20px" }}>Something went wrong.</h2>
                 
                 <p style={{ fontSize: "1.2em", maxWidth: "600px", marginTop: "20px" }}>
                     {error?.status === 404 
@@ -26,13 +26,13 @@ const ErrorPage = () => {
                 </p>
 
                 <div className="d-flex gap-3 mt-4 flex-wrap justify-content-center">
-                    <Link to="/explore" className="btn btn-outline-warning" style={{ borderColor: "#ffce00", color: "black"  }}>
+                    <Link to="/explore" className="btn btn-outline-warning" style={{ borderColor: "#F0D574", color: "black"  }}>
                         Explore projects
                     </Link>
-                    <Link to="/contact" className="btn" style={{ backgroundColor: "#28a745", color: "#fff" }}>
+                    <Link to="/contact" className="btn" style={{ backgroundColor: "#52B878", color: "#fff" }}>
                         Contact Us
                     </Link>
-                    <a href="mailto:support@togotechcensus.com" className="btn btn-outline-warning" style={{ borderColor: "#ffce00", color: "black" }}>
+                    <a href="mailto:support@togotechcensus.com" className="btn btn-outline-warning" style={{ borderColor: "#F0D574", color: "black" }}>
                         Email Support
                     </a>
                 </div>

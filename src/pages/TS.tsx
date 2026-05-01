@@ -28,7 +28,7 @@ const sections = [
           "The ability for users to submit new projects.",
         ].map((item, i) => (
           <li key={i} className="flex items-start gap-3">
-            <span className="mt-1 w-1.5 h-1.5 rounded-full bg-success shrink-0" style={{ backgroundColor: '#28a745', width: '6px', height: '6px', borderRadius: '50%', marginTop: '8px' }} />
+            <span className="mt-1 w-1.5 h-1.5 rounded-full bg-success shrink-0" style={{ backgroundColor: '#52B878', width: '6px', height: '6px', borderRadius: '50%', marginTop: '8px' }} />
             <span>{item}</span>
           </li>
         ))}
@@ -54,8 +54,8 @@ const sections = [
             text: "TogoTechHub reserves the right to modify, delete, or refuse the publication of any project that does not comply with the platform's ethics.",
           },
         ].map((item, i) => (
-          <div key={i} className="border-l-2 border-success/40 pl-4" style={{ borderLeft: '2px solid rgba(40, 167, 69, 0.4)', paddingLeft: '1rem', marginBottom: '1rem' }}>
-            <p className="text-success text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#28a745', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{item.label}</p>
+          <div key={i} className="border-l-2 border-success/40 pl-4" style={{ borderLeft: '2px solid rgba(82, 184, 120, 0.4)', paddingLeft: '1rem', marginBottom: '1rem' }}>
+            <p className="text-success text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#52B878', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{item.label}</p>
             <p className="text-slate-600 text-sm leading-relaxed" style={{ color: '#475569', fontSize: '0.875rem' }}>{item.text}</p>
           </div>
         ))}
@@ -77,8 +77,8 @@ const sections = [
             text: "Logos and brand names mentioned in the directory belong to their respective owners. TogoTechHub claims no rights over these entities.",
           },
         ].map((item, i) => (
-          <div key={i} className="border-l-2 border-success/40 pl-4" style={{ borderLeft: '2px solid rgba(40, 167, 69, 0.4)', paddingLeft: '1rem', marginBottom: '1rem' }}>
-            <p className="text-success text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#28a745', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{item.label}</p>
+          <div key={i} className="border-l-2 border-success/40 pl-4" style={{ borderLeft: '2px solid rgba(82, 184, 120, 0.4)', paddingLeft: '1rem', marginBottom: '1rem' }}>
+            <p className="text-success text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#52B878', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{item.label}</p>
             <p className="text-slate-600 text-sm leading-relaxed" style={{ color: '#475569', fontSize: '0.875rem' }}>{item.text}</p>
           </div>
         ))}
@@ -98,7 +98,7 @@ const sections = [
             "Every project manager can request the modification or removal of their profile by simple contact.",
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
-              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-success shrink-0" style={{ backgroundColor: '#28a745', width: '6px', height: '6px', borderRadius: '50%', marginTop: '8px' }} />
+              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-success shrink-0" style={{ backgroundColor: '#52B878', width: '6px', height: '6px', borderRadius: '50%', marginTop: '8px' }} />
               <span>{item}</span>
             </li>
           ))}
@@ -119,7 +119,7 @@ const sections = [
             "Any technical interruptions of the site.",
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">
-              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-warning shrink-0" style={{ backgroundColor: '#ffce00', width: '6px', height: '6px', borderRadius: '50%', marginTop: '8px' }} />
+              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-warning shrink-0" style={{ backgroundColor: '#F0D574', width: '6px', height: '6px', borderRadius: '50%', marginTop: '8px' }} />
               <span>{item}</span>
             </li>
           ))}
@@ -195,7 +195,7 @@ function Terms() {
         .badge {
           font-family: 'Space Mono', monospace;
           font-size: 11px;
-          color: #28a745;
+          color: #52B878;
           background: rgba(40,185,129,0.1);
           border: 1px solid rgba(40,185,129,0.2);
           padding: 2px 8px;
@@ -211,7 +211,7 @@ function Terms() {
           font-family: 'Space Mono', monospace;
           text-transform: uppercase;
           letter-spacing: 0.1em;
-          color: #28a745;
+          color: #52B878;
           border: 1px solid rgba(40,167,69,0.25);
           padding: 3px 10px;
           border-radius: 100px;
@@ -220,8 +220,8 @@ function Terms() {
         .chevron {
           width: 10px;
           height: 10px;
-          border-right: 2px solid #28a745;
-          border-bottom: 2px solid #28a745;
+          border-right: 2px solid #52B878;
+          border-bottom: 2px solid #52B878;
           transform: rotate(45deg);
           transition: transform 0.3s ease;
           display: inline-block;
@@ -244,8 +244,8 @@ function Terms() {
           padding-left: 10px;
         }
         .toc-link:hover {
-          color: #28a745;
-          border-left-color: #28a745;
+          color: #52B878;
+          border-left-color: #52B878;
         }
       `}</style>
 
@@ -295,7 +295,7 @@ function Terms() {
                       fontFamily: "'DM Sans', sans-serif",
                       fontSize: "16px",
                       fontWeight: "500",
-                      color: isOpen ? "#28a745" : "#475569",
+                      color: isOpen ? "#52B878" : "#475569",
                       transition: "color 0.2s",
                     }}>
                       {section.title}
@@ -339,8 +339,8 @@ function Terms() {
               className="toc-link"
               onClick={() => setActiveSection(activeSection === s.id ? null : s.id)}
               style={{
-                color: activeSection === s.id ? "#28a745" : undefined,
-                borderLeftColor: activeSection === s.id ? "#28a745" : undefined
+                color: activeSection === s.id ? "#52B878" : undefined,
+                borderLeftColor: activeSection === s.id ? "#52B878" : undefined
               }}
             >
               {s.id} · {s.title}
@@ -357,7 +357,7 @@ function Terms() {
             <p style={{
               fontFamily: "'Space Mono', monospace",
               fontSize: "11px",
-              color: "#28a745",
+              color: "#52B878",
               fontWeight: "bold",
               marginBottom: "8px"
             }}>Contact</p>

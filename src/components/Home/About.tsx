@@ -2,7 +2,7 @@ import dev from '../../assets/DKD.jpg'
 
 const About = () => {
     return (
-        <div className="about-page">
+        <div className="about-page" id="about">
 
             {/* ── Mission ── */}
             <section className="about-mission">

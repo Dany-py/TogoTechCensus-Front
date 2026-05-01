@@ -21,7 +21,7 @@ const Footer = () => {
             <div className="row">
                 <div className="col-md-4 me-auto" >
                     <h2><img alt="logo" src={logo} />TogoTechCensus</h2>
-                    <p style={{ color: '#ffce00', fontSize: '1.25em' }}>Let us digitize our potential together</p>
+                    <p style={{ color: '#F0D574', fontSize: '1.25em' }}>Let us digitize our potential together</p>
                 </div>
 
                 <div className="col-md-4">

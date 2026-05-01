@@ -104,7 +104,7 @@ const Activity = ({ onMarkAsRead }: ActivityProps) => {
                                 <div style={{ fontSize: '1.5em', minWidth: '40px' }}>🔔</div>
                                 <div className="flex-grow-1 d-flex align-items-start justify-content-between">
                                     <p className="mb-0">
-                                        <span style={{ color: '#28A745' }}> {activity.title}</span><br/>
+                                        <span style={{ color: '#52B878' }}> {activity.title}</span><br/>
                                         <strong>{activity.message}</strong>
                                     </p>
                                 </div>
@@ -113,7 +113,7 @@ const Activity = ({ onMarkAsRead }: ActivityProps) => {
                     </div>
 
                     {activities.length > 10 ? <div className="text-center mt-4">
-                        <a href="#" style={{ color: '#28A745', textDecoration: 'none' }}>
+                        <a href="#" style={{ color: '#52B878', textDecoration: 'none' }}>
                             Load more activities...
                         </a>
                     </div>

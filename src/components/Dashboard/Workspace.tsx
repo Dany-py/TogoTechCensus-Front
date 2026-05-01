@@ -156,7 +156,7 @@ const Workspace = () => {
                                             
                                             <div className="project-content w-100 h-100 p-3 d-flex flex-column"
                                                 style={{
-                                                    border: selectedProjectId === item.id ? '2px solid #28A745' : 'none',
+                                                    border: selectedProjectId === item.id ? '2px solid #52B878' : 'none',
                                                     borderRadius: '8px',
                                                     backgroundColor: selectedProjectId === item.id ? '#f0f9f5' : 'transparent',
                                                     transition: 'all 0.3s ease'

@@ -75,7 +75,7 @@ const Dashboard = () => {
 
                     <span className="my-3 d-flex align-items-center justify-content-center">
                         <h3  className="text-start ms-3"><strong>Featured projects</strong></h3>
-                        <a href='/explore' style ={{color:'#28A745', textDecoration:'none'}}
+                        <a href='/explore' style ={{color:'#52B878', textDecoration:'none'}}
                                             className="ms-auto d-flex align-items-center justify-content-center"
                                             >See the full directory <span style={{fontSize:'1.3em'}} className='mx-1' ><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path d="M9 18l6-6-6-6" />
@@ -93,11 +93,13 @@ const Dashboard = () => {
                                     <strong> {item.name} </strong>
 
                                     <span className='d-grid'>                                        
-                                        {item.is_verified && (
-                                            <span className="badge bg-success mb-2 mx-2">Verified</span>
+                                        {item.is_verified && (<>
+                                            {/*<span className="badge bg-success mb-2 mx-2">Verified</span>*/}
+                                            <span className="badge-verified mb-2 mx-2"><strong>Verified</strong></span>
+                                            </>
                                         )} 
 
-                                        <i className="techno"> {item.type.charAt(0).toUpperCase() + item.type.slice(1)} </i>
+                                        <i className="project-type"> {item.type.charAt(0).toUpperCase() + item.type.slice(1)} </i>
                                     </span>
                                 </h3>
                                 <p> {item.description.split('. ')[0]} </p>
@@ -113,8 +115,8 @@ const Dashboard = () => {
                                 <section className='d-flex justify-content-center'>
                                     {   Array.isArray(item.authors) && item.authors.length > 0 ? (
                                         item.authors.map((author: any) => (
-                                            <h4 className='mb-0'key={author.id}><i> By {author.name ? author.name : 'Unknown'}</i></h4>
-                                        ))) : (<h4 className='mb-0'><i>Build by <span style={{color:"#28A745"}}>{item.name}</span> dev team </i></h4>)
+                                            <h4 className='mb-0'key={author.id}><i> Build by {author.name === 'owner' ? item.name + ' dev team' : author.name}</i></h4>
+                                        ))) : (<h4 className='mb-0'><i>Build by <span style={{color:"#52B878"}}>{item.name}</span> dev team </i></h4>)
                                     }
                                 </section>
                             </div>

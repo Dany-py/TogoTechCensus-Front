@@ -38,6 +38,7 @@ dist-ssr/
 
 # Testing
 coverage/
+src/data/visily-multiscreens
 
 # Misc
 .vercel
