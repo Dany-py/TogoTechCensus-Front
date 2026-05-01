@@ -41,10 +41,10 @@ function Navbar() {
                         <Link label='Startups' href= "#home-project"className= "navbar-brand"></Link>
                     </li>
                     <li className="nav-item">
-                        <Link label='Explore' href= "/explore"className= "navbar-brand"></Link>
+                        <Link label='About' href= "#about"className= "navbar-brand"></Link>
                     </li>
                     <li className="nav-item">
-                        <Link label='About' href= "#about"className= "navbar-brand"></Link>
+                        <Link label='Explore' href= "/explore"className= "navbar-brand"></Link>
                     </li>
                     <li className="nav-item">
                         <Link label='Contact' href= "/contact"className= "navbar-brand"></Link>
