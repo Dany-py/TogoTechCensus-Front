@@ -29,19 +29,33 @@
     padding: 0.5em 1em;
     border-radius: 8px;
     transition: all 0.3s ease;
-    display: inline-block;
+    /*display: inline-block;*/
+    display: flex;
+    justify-self: center;
+    align-content: center;
 }
 
 .link:hover {
     color: #fff;
     background-color: #52B878;
     transform: translateY(-2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 576px) {
     .link {
         width: 4em;
-        height: 1.5em;
+        height: fit-content;
+    }
+    .link:hover {
+        color: #fff;
+        background-color: #52B878;
+        transform: translateY(-2px);
+        display: flex;
+        justify-self: center;
+        align-content: center;
     }
 }
 

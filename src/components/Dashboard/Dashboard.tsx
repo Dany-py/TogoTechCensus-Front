@@ -89,14 +89,17 @@ const Dashboard = () => {
                                 <h3 style={{
                                     textAlign: 'start'
                                 }} className=' w-10 d-flex align-items-center justify-content-between'>
-                                    <img src={item.logo_url ? item.logo_url : project_png} className='project-icon' />
+                                    <img src={item.logo_url ? item.logo_url : project_png}
+                                        className='project-icon'
+                                        onError={(e) => {
+                                            (e.target as HTMLImageElement).src = project_png;
+                                        }}
+                                    />
                                     <strong> {item.name} </strong>
 
                                     <span className='d-grid'>                                        
-                                        {item.is_verified && (<>
-                                            {/*<span className="badge bg-success mb-2 mx-2">Verified</span>*/}
+                                        {item.is_verified && (
                                             <span className="badge-verified mb-2 mx-2"><strong>Verified</strong></span>
-                                            </>
                                         )} 
 
                                         <i className="project-type"> {item.type.charAt(0).toUpperCase() + item.type.slice(1)} </i>

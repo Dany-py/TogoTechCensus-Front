@@ -46,7 +46,12 @@ const Project = () => {
                             <h3 style={{
                                 textAlign: 'start'
                             }} className='d-flex align-items-center justify-content-between' >
-                                <img src={item.logo_url ? item.logo_url : project_png} className='project-icon' />
+                                <img src={item.logo_url ? item.logo_url : project_png}
+                                        className='project-icon'
+                                        onError={(e) => {
+                                            (e.target as HTMLImageElement).src = project_png;
+                                        }}
+                                    />
                                 <strong> {item.name} </strong><span className='techno'> <i> {item.is_verified} </i> </span>
                             </h3>
                             <p> {item.description} </p>

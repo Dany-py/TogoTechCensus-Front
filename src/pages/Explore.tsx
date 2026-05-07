@@ -1,12 +1,13 @@
 
 import Technologies from '../components/Explore/Technologies';
 import Categories from '../components/Explore/Categories';
+import { useCallback, useState, useEffect } from 'react';
 import project_png from '../assets/project.png';
 import Footer from '../components/Home/Footer';
 import Types from '../components/Explore/Type';
 import Navbar from '../components/Home/Navbar';
-import { useState, useEffect } from 'react';
 import TitlePage from "../utils/Title";
+import { debounce } from 'lodash';
 import slugify from 'slugify';
 import "../styles/Home.css";
 import axios from 'axios';
@@ -16,7 +17,7 @@ const Explore = () => {
     TitlePage({ refPath: window.location.pathname })
     const url = import.meta.env.VITE_API_PROJECT as string
     const [project, setProject] = useState([])
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(2)
     const [previousPage, setPreviousPage] = useState('')
     const [name, setName] = useState('')
     const [selectedTechnology, setSelectedTechnology] = useState('')
@@ -35,21 +36,32 @@ const Explore = () => {
     const handleKeyDown = async (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             searchProject()
-        } else {
-            const urlWithName = `${url}unauth/?name=${slugify(name, { lower: true })}`
-            const response = await axios.get(urlWithName)
-            const apiResponse = response.data
-            const projectData = apiResponse.results
-            setProject(projectData)
+            return
         }
     }
+    
+    const handleChange = useCallback(
+        debounce(async (value: string) => {
+            if (!value.trim()) return
 
+            try {
+                const urlWithName = `${url}unauth/?name=${slugify(value, { lower: true })}`
+                const response = await axios.get(urlWithName)
+                const projectData = response.data
+                setProject(projectData)
+            } catch (error) {
+                console.error('Erreur de recherche :', error)
+            }
+        }, 300),
+        [url]
+    )
 
-    const handleProject = async () => {
+    const LoadProject = async () => {
         const urlWithPage = `${url}unauth/?page=${page}`
         setPage(page + 1)
         const response = await axios.get(urlWithPage)
         const apiResponse = response.data
+        if (apiResponse.next === null) setPage(1)
         const projectData = apiResponse.results
         setPreviousPage(apiResponse.previous)
         setProject(projectData)
@@ -130,7 +142,7 @@ const Explore = () => {
                             <input className='form-control w-100 mx-3'
                                 placeholder='Search project ...'
                                 value={name}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setName(e.target.value); handleChange(e.target.value) }}
                                 onKeyDown={handleKeyDown}
                             />
                             <button style={{
@@ -157,7 +169,12 @@ const Explore = () => {
                                 <h3 style={{
                                     textAlign: 'start'
                                 }} className=' d-flex align-items-center justify-content-between'>
-                                    <img src={item.logo_url ? item.logo_url : project_png} className='project-icon' />
+                                    <img src={item.logo_url ? item.logo_url : project_png}
+                                        className='project-icon'
+                                        onError={(e) => {
+                                            (e.target as HTMLImageElement).src = project_png;
+                                        }}
+                                    />
                                     <strong> {item.name} </strong>
                                     <span className='d-grid'>                                        
                                         {item.is_verified && (
@@ -198,7 +215,7 @@ const Explore = () => {
                 <button className='my-5 mx-3' style={{
                     backgroundColor: '#dff1df',
                     color: '#52B878'
-                }} onClick={handleProject}><strong>Load more</strong></button>
+                }} onClick={LoadProject}><strong>Load more</strong></button>
             </div>
             <Footer />
         </div>

@@ -70,7 +70,7 @@ rgba(40, 167, 70, 0.779)
 button:hover {
     border-color: #F0D574;
     background-color: #52B878;
-
+    color: black;
 }
 
 button:focus,

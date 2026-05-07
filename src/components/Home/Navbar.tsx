@@ -34,9 +34,8 @@ function Navbar() {
             <div className = {`collapse navbar-collapse ${open ? "show" : ""}`} id="navbar-2">
                 <a style={{
                     textDecoration: 'none',
-                    fontSize: '2em',
-                    color:'#52B878'}} href= "/"><img alt = "logo" src ={logo} />TogoTechCensus</a>
-                <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
+                    color:'#52B878'}} href= "/" className="title-link"><img alt = "logo" src ={logo} />TogoTechCensus</a>
+                <ul className="navbar-nav mb-lg-0">
                     <li className="nav-item">
                         <Link label='Startups' href= "#home-project"className= "navbar-brand"></Link>
                     </li>
@@ -49,7 +48,7 @@ function Navbar() {
                     <li className="nav-item">
                         <Link label='Contact' href= "/contact"className= "navbar-brand"></Link>
                     </li>
-                    <span className="nav-item d-gid ms-auto">
+                    <span className="nav-item navbar-nav-span">
                         {isSign ? <Link label='Sign in' href= "/SignIn"className= "navbar-brand"></Link>
                             : <Link label='Sign up' href= "/SignUp"className= "navbar-brand"></Link>
                         }

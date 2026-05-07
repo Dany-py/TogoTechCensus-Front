@@ -89,7 +89,7 @@ const Cards = () => {
             
             <div className="mt-5 container d-flex align-items-center justify-content-center action">
                 <img src ={dev} className='card-img'/>
-                <h1 className="text-start">
+                <h1 className="text-start call-action">
                     Are you a project manager or developer ? <br/>
                     Let us add you project to the directory.
 
