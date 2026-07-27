@@ -13,35 +13,51 @@
    1. FOND DE PAGE
 ───────────────────────────────────────────── */
 .connection {
-    background: linear-gradient(135deg, #52B878 0%, #66BB6A 60%, #F0D574 100%);
+    width: 100%;
+    height: 100%;
+    background-color: var(--surface-transparent-color);
 }
 
 
 /* ─────────────────────────────────────────────
    2. FORMULAIRE DE CONNEXION
 ───────────────────────────────────────────── */
-.connection-form {
-    padding: 2em;
-    width: 50%;
-    color: black;
-    border: 1px #ccc solid;
-    border-radius: 20px;
-    background-color: var(--surface-transparent-color);
-    backdrop-filter: blur(50px);
-    box-shadow: 0 5px 10px rgb(255, 252, 252);
-    font-size: 1em;
+.grill {
+    background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
 }
 
+.connection-form {
+    padding: 2em;
+    color: black;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    display: block;
+    align-items: center;
+    align-content: center;
+}
 
+.connection-logo {
+    width: 90%;
+    height: 100vh;
+    padding: 2em;
+}
 /* ─────────────────────────────────────────────
    3. BOUTON DE CONNEXION
 ───────────────────────────────────────────── */
 .login-btn {
     width: 70%;
     height: 4em;
-    background-color: transparent;
+    background-color: white;
     backdrop-filter: blur(30px);
     border: 1px #ccc solid;
+    color: black;
+    inset:-3px;
+    border-radius:999px;
+    box-shadow:0 0 0 0 rgba(63,174,106,.35);
+    animation:verifiedPulse 3.2s ease-in-out 2.6s infinite;
 }
 
 
@@ -94,4 +110,10 @@
         width: 4em;
         height: 4em;
     }
+}
+
+@keyframes verifiedPulse{
+    0%,
+    10%{box-shadow:0 0 0 0 rgba(63,174,106,.28);}
+    50%{box-shadow:0 0 0 6px rgba(63,174,106,0);}
 }

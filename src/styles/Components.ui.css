@@ -29,7 +29,6 @@
     padding: 0.5em 1em;
     border-radius: 8px;
     transition: all 0.3s ease;
-    /*display: inline-block;*/
     display: flex;
     justify-self: center;
     align-content: center;
@@ -37,7 +36,8 @@
 
 .link:hover {
     color: #fff;
-    background-color: #52B878;
+    background: rgba(0, 107, 63, 0.08);
+    color: #006b3f;
     transform: translateY(-2px);
     display: flex;
     justify-content: center;

@@ -34,25 +34,28 @@ function Navbar() {
             <div className = {`collapse navbar-collapse ${open ? "show" : ""}`} id="navbar-2">
                 <a style={{
                     textDecoration: 'none',
-                    color:'#52B878'}} href= "/" className="title-link"><img alt = "logo" src ={logo} />TogoTechCensus</a>
+                    color:'#006b3f'}} href= "/" className="title-link"><img alt = "logo" src ={logo} />TogoTechCensus</a>
                 <ul className="navbar-nav mb-lg-0">
                     <li className="nav-item">
                         <Link label='Startups' href= "#home-project"className= "navbar-brand"></Link>
                     </li>
                     <li className="nav-item">
-                        <Link label='About' href= "#about"className= "navbar-brand"></Link>
-                    </li>
-                    <li className="nav-item">
                         <Link label='Explore' href= "/explore"className= "navbar-brand"></Link>
                     </li>
+                    {/*<li className="nav-item">
+                        <Link label='AI Explore' href= "/ai-explore"className= "navbar-brand"></Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link label='Blog ' href= "#about"className= "navbar-brand"></Link>
+                    </li>*/}
                     <li className="nav-item">
                         <Link label='Contact' href= "/contact"className= "navbar-brand"></Link>
                     </li>
-                    <span className="nav-item navbar-nav-span">
+                    <li className="nav-item navbar-nav-span">
                         {isSign ? <Link label='Sign in' href= "/SignIn"className= "navbar-brand"></Link>
                             : <Link label='Sign up' href= "/SignUp"className= "navbar-brand"></Link>
                         }
-                    </span>
+                    </li>
                 </ul>
             </div>) }
         </nav>

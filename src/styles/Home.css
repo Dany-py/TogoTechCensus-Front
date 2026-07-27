@@ -29,6 +29,7 @@
     width: 100%;
     height: fit-content !important;
     color: black;
+    border-bottom: 1px solid #ccc;
 }
 
 .navbar-brand {
@@ -46,6 +47,7 @@
 .nav-item {
     margin-right: 2em;
     width: fit-content;
+    font-weight: 500;
 }
 
 .navbar-toggler {
@@ -64,7 +66,6 @@
 }
 
 .navbar-nav-span {
-    background-color: #F0D574;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,8 +129,15 @@
 .hero {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, rgba(40, 167, 70, 0.779) 0%, rgba(40, 167, 70, 0.779) 60%, #F0D574 100%);
-    color: white;
+    background-image:
+        radial-gradient(circle at center, transparent 20%, #ffffff 80%),
+        linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  
+    background-size: 
+        100% 100%,
+        45px 45px,
+        45px 45px;
     padding: 6rem 2rem 5rem;
     text-align: center;
 }
@@ -142,15 +150,15 @@
 }
 
 .hero-title {
-    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-size: clamp(2rem, 5vw, 3.9rem);
     font-weight: 800;
     line-height: 1.15;
     margin-bottom: 1rem;
 }
 
 .hero-highlight {
-    color: #F0D574;
-    text-shadow: 0 0 20px rgba(240, 213, 116, 0.5);
+    color: #52B878;
+    text-shadow: 0 0 20px rgba(0, 107, 63, 0.08);
 }
 
 .hero-sub {
@@ -159,30 +167,6 @@
     max-width: 540px;
     margin: 0 auto;
     line-height: 1.7;
-}
-
-/* Orbes décoratifs */
-.hero-orb {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.15;
-    pointer-events: none;
-}
-
-.orb-1 {
-    width: 350px;
-    height: 350px;
-    background: #F0D574;
-    top: -80px;
-    left: -80px;
-}
-
-.orb-2 {
-    width: 250px;
-    height: 250px;
-    background: white;
-    bottom: -60px;
-    right: -60px;
 }
 
 @media (max-width: 768px) {
@@ -222,8 +206,13 @@
     border: 1px #ccc solid;
     padding: 1em;
     border-radius: 10px;
-    transform: scale(1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    /*transform: scale(1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;*/
+    opacity:0;
+    transform:translateY(28px) scale(.96);
+    animation:cardIn 700ms cubic-bezier(.2,.75,.25,1) forwards;
+    transition:transform 320ms cubic-bezier(.2,.7,.2,1), box-shadow 320ms ease, border-color 320ms ease;
+    will-change:transform;
 }
 
 .card:hover {
@@ -247,7 +236,7 @@
     text-align: center;
     padding: 1em 0.5em !important;
     min-height: 280px;
-    background: linear-gradient(135deg, rgba(82, 184, 120, 0.05) 0%, rgba(240, 213, 116, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(82, 184, 120, 0.05) 0%, rgba(0, 107, 63, 0.08) 100%);
     border: 2px solid rgba(82, 184, 120, 0.15);
     transition: all 0.3s ease;
 }
@@ -296,6 +285,16 @@
     letter-spacing: 0.5px;
 }
 
+.fadeInAnim {
+    opacity: 0;
+    animation:fadeIn 1500ms ease forwards;
+}
+
+.fadeUpAnim {
+    opacity: 0;
+    animation: fadeUp 1500ms ease forwards;
+}
+
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
@@ -326,7 +325,7 @@
 .card-link:hover {
     color: white;
     background-color: #52B878;
-    box-shadow: 0 6px 15px rgba(240, 213, 116, 0.5);
+    box-shadow: 0 6px 15px rgba(0, 107, 63, 0.08);
     transform: translateY(-2px);
 }
 
@@ -341,6 +340,27 @@
     align-items: center;
     justify-content: center;
     font-size: large;
+    opacity:0;
+    transform:translateY(6px) scale(.85);
+    animation:badgeIn 460ms cubic-bezier(.34,1.56,.64,1) forwards;
+}
+
+.badge-verified::after{
+    content:"";
+    position:absolute;inset:-3px;
+    border-radius:999px;
+    box-shadow:0 0 0 0 rgba(63,174,106,.35);
+    animation:verifiedPulse 3.2s ease-in-out 2.6s infinite;
+}
+
+.desc{
+    font-size:14.5px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    text-align:center;
+    margin:6px 0 20px;
+    opacity:0;
+    animation:fadeUp 600ms ease forwards;
 }
 
 @media (max-width: 1024px) {
@@ -371,6 +391,8 @@
 
     .call-action {
         font-size: 2.5em;
+        opacity:0;
+        animation:fadeUp 600ms ease forwards;
     }
 }
 
@@ -413,6 +435,8 @@
     }
     .call-action {
         font-size: 2em;
+        opacity:0;
+        animation:fadeUp 600ms ease forwards;
     }
 }
 
@@ -434,6 +458,9 @@
     width: 2em;
     height: 2em;
     border-radius: 10px;
+    opacity:0;
+    transform:scale(.6) rotate(-8deg);
+    animation:iconPop 560ms cubic-bezier(.34,1.56,.64,1) forwards;
 }
 
 .project-type {
@@ -464,6 +491,10 @@
     font-size: medium;
     border-radius: 10px;
     padding: 0.5em;
+    opacity:0;
+    transform:translateY(10px);
+    animation:tagIn 460ms cubic-bezier(.2,.7,.2,1) forwards;
+    transition:background 220ms ease, color 220ms ease;
 }
 
 @media (max-width: 576px) {
@@ -824,9 +855,19 @@
    7. FOOTER
 ───────────────────────────────────────────── */
 .footer {
-    background: linear-gradient(135deg, #52B878 0%, #66BB6A 100%);
-    color: #ffffff;
+    /*background: linear-gradient(135deg, #006b3f 0%, #52B878 100%);
+    color: #006b3f;*/
     padding: 1em;
+    border-top: 6px solid transparent;
+    border-image: repeating-linear-gradient(
+    to right,
+    #006a4e ,
+    #006a4e 5px,
+    #ffd100 5px, 
+    #ffd100 10px,
+    #E7E7E7 10px, 
+    #E7E7E7 15px
+  ) 1;
 }
 
 .footer a {
@@ -837,4 +878,84 @@
 .footer img {
     width: 2em;
     height: 2em;
+}
+
+/* Aniamations */
+
+
+@keyframes cardIn{
+    to {
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes iconPop{
+    to {
+        opacity:1;
+        transform:scale(1) rotate(0);
+    }
+}
+
+@keyframes badgeIn{
+    to {
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes verifiedPulse{
+    0%,10%{box-shadow:0 0 0 0 rgba(63,174,106,.28);}
+    50%{box-shadow:0 0 0 6px rgba(63,174,106,0);}
+}
+
+@keyframes fadeUp{
+    from {
+        opacity:0;
+        transform:translateY(28px);
+    }
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeDown{
+    from {
+        opacity:0;
+        transform:translateY(-28px);
+    }
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeIn{
+    from {
+        opacity:0;
+        transform:translateX(-28px);
+    }
+    to {
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes fadeOut{
+    from {
+        opacity:0;
+        transform:translateX(28px);
+    }
+    to {
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes tagIn{
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
 }

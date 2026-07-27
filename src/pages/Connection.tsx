@@ -17,8 +17,7 @@ const Connection = () => {
         }
     }, [])
     return(
-        <div className="container-fluid vh-150 connection">
-            <div className="hero-orb orb-1" />
+        <div className="container-fluid vh-150 connection grill">
             <div className="vh-100 d-flex align-items-center justify-content-center">
                 {isLogin ? (<Login />) : (<Register />)}
             </div>

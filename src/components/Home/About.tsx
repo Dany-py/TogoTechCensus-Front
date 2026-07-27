@@ -51,35 +51,6 @@ const About = () => {
                 </div>
             </section>
 
-            {/* ── Timeline ──}
-            <section className="about-timeline-section">
-                <h2 className="about-section-title text-center mb-5">Notre histoire</h2>
-                <div className="about-timeline">
-                    {[
-                        { year: '2022', title: 'Idée fondatrice',      desc: 'L\'idée de cartographier le tech togolais prend forme.' },
-                        { year: '2023', title: 'Premiers jalons',      desc: 'Développement du MVP et premiers projets référencés.' },
-                        { year: '2024', title: 'Lancement officiel',   desc: 'Mise en ligne de la plateforme et ouverture à la communauté.' },
-                        { year: '2025', title: 'Croissance continue',  desc: 'Extension des fonctionnalités et partenariats stratégiques.' },
-                    ].map(({ year, title, desc }, i) => (
-                        <div className="about-timeline-item" key={year}>
-                            <div className="about-timeline-year">{year}</div>
-                            <div className={`about-timeline-dot ${i % 2 === 0 ? 'dot-green' : 'dot-yellow'}`} />
-                            <div className="about-timeline-content">
-                                <h4>{title}</h4>
-                                <p>{desc}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* ── CTA ── 
-            <section className="about-cta">
-                <h2>Rejoignez l'aventure</h2>
-                <p>Vous avez un projet, une entreprise ou une compétence à valoriser ?</p>
-                <a href="/contact" className="about-cta-btn">Contactez-nous</a>
-            </section>*/}
-
         </div>
     )
 }

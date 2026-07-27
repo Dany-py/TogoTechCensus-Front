@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { userAuth } from './services/auth.service';
 import { dashboardAction } from './services/project.service'
 import './App.css'
+import Akuvi from './pages/Akuvi';
 import Explore from './pages/Explore';
 import Terms from './pages/TS';
 import slugify from 'slugify';
@@ -14,6 +15,7 @@ import { dashboardLoader } from './services/dashboard.loader.service';
 import { Details } from './pages/Details';
 import Contact from './pages/Contact';
 import ErrorPage from './pages/ErrorPage';
+import { logClientError } from './services/errorLogger.service';
 
 const refPath = window.location.pathname
 const newRefPath = refPath as string
@@ -28,6 +30,21 @@ const slugProject = projectRaw ? slugify(decodeURIComponent(projectRaw), {
     locale: 'en',
     trim: true
 }) : '';
+
+const errorAction = async ({ request }: { request: Request }) => {
+  try {
+    const error = new Error(`Route error on ${request.method} ${new URL(request.url).pathname}`);
+    await logClientError(error, {
+      route: new URL(request.url).pathname,
+      method: request.method,
+    });
+  } catch (logError) {
+    console.log('Failed to log route error', logError);
+    console.error('Failed to log route error', logError);
+  }
+
+  return null;
+};
 
 const router = createBrowserRouter([
   {
@@ -46,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "explore",
         element: <Explore />,
+      },
+      {
+        path: "ai-explore",
+        element: <Akuvi />,
       },
       {
         path: `project/${slugProject}`,
@@ -77,6 +98,7 @@ const router = createBrowserRouter([
       },
       {
         path: "*",
+        action: errorAction,
         element: <ErrorPage />,
       },
     ],

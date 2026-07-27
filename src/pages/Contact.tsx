@@ -10,7 +10,7 @@ const Contact = () => {
         <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
             <Navbar />
             
-            <div className="container flex-grow-1 d-flex flex-column justify-content-center my-5" style={{ minHeight: "60vh" }}>
+            <div className="container flex-grow-1 d-flex flex-column justify-content-center my-5 hero" style={{ minHeight: "60vh" }}>
                 <div className="row justify-content-center text-center">
                     <div className="col-md-8">
                         <h1 style={{ color: "#52B878", marginBottom: "30px" }}>Contact Us</h1>

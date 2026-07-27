@@ -1,11 +1,13 @@
 import type { IProject } from '../../types/Project';
 import project_png from '../../assets/project.png';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import slugify from 'slugify';
 import axios from 'axios';
 
 const Project = () => {
     const [project, setProject] = useState<Array<IProject>>([])
+    const navigate = useNavigate()
     const url = import.meta.env.VITE_API_PROJECT as string
     useEffect(() => {
         const LoadProject = async () => {
@@ -13,6 +15,8 @@ const Project = () => {
             const response = await axios.get(urlWithPage)
             const apiResponse = response.data
             const projectData = apiResponse.results
+            //console.log('Project url :', urlWithPage)
+            //console.log('Project data :', projectData)
             setProject(projectData)
         }
         LoadProject()
@@ -20,9 +24,11 @@ const Project = () => {
 
     return (
         <div className="container-fluid projects" id="home-project">
-            <h1 >Top projects</h1> <br />
-            <div className='row justify-content-center'>
-                {   
+            <h1 >Already listed</h1>
+            <br />
+
+            <div className="row justify-content-center">
+                {
                     project.map((item: any) => (
                             <a style={{textDecoration:'none', color:'black'}} href={`project/${slugify(decodeURIComponent(item.name), {
                                                         replacement: '-',
@@ -52,7 +58,7 @@ const Project = () => {
                                         <i className="project-type"> {item.type.charAt(0).toUpperCase() + item.type.slice(1)} </i>
                                     </span>
                                 </h3>
-                                <span className="mb-4">
+                                <span className="mb-4 desc">
                                     {item.description.split('. ')[0]}
                                 </span>
                                 

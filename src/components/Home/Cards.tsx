@@ -4,11 +4,35 @@ import startup from '../../assets/startup2.png'
 import projet from '../../assets/projet.png'
 import developer from '../../assets/developpeur.png'
 import CountUp from '../ui/CountUp'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getCookie } from '../../services/csrf.service'
 
+export function ScrollComponent() {
+}
 const Cards = () => {
     const [isSign, setSign] = useState(false)
+
+    const [isIntersecting, setIsIntersecting] = useState(false);
+    const targetRef = useRef(null);
+
+    useEffect(() => {
+        const options = {
+        root: null,
+        rootMargin: "0px",  
+        threshold: 0.5,
+        };
+
+        const observer = new IntersectionObserver(([entry]) => {
+        setIsIntersecting(entry.isIntersecting);
+        }, options);
+        if (targetRef.current) {
+        observer.observe(targetRef.current);
+        }
+        return () => {
+        observer.disconnect();
+        };
+    }, []);
+    
     useEffect(() =>{
         const cookies = getCookie('sessionid')
         const session = getCookie('user_session')
@@ -87,9 +111,11 @@ const Cards = () => {
                 <div className="card-badge">Growing</div>
             </div>
             
-            <div className="mt-5 container d-flex align-items-center justify-content-center action">
-                <img src ={dev} className='card-img'/>
-                <h1 className="text-start call-action">
+            <div
+                ref={targetRef} 
+                className="mt-5 container d-flex align-items-center justify-content-center action">
+                <img src ={dev} className={isIntersecting ? "card-img fadeUpAnim" : "card-img" }/>
+                <h1 className={isIntersecting ? "text-start call-action fadeInAnim" : "text-start call-action" } >
                     Are you a project manager or developer ? <br/>
                     Let us add you project to the directory.
 

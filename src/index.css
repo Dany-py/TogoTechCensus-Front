@@ -26,7 +26,22 @@
 
     /* Couleurs semi-transparentes réutilisables */
     --outline-transparent-color: rgba(255, 255, 255, 0.2);
-    --surface-transparent-color: rgba(255, 255, 255, 0.1);
+    --surface-transparent-color: rgba(0, 107, 63, 0.08)/*rgba(255, 255, 255, 0.1)*/;
+    
+    --ink:#14213d;
+    --ink-soft:#4a5468;
+    --paper:#ffffff;
+    --bg:#f7f8fa;
+    --line:#e6e8ec;
+    --verified:#3fae6a;
+    --verified-dark:#2e8f54;
+    --startup:#f4e3b0;
+    --startup-ink:#8a6d1d;
+    --company:#dbe6f7;
+    --company-ink:#2b5590;
+    --chip:#eef0f3;
+    --chip-ink:#5b6472;
+    --accent:#e05a3a;
 }
 
 /* ─────────────────────────────────────────────
@@ -68,9 +83,10 @@ rgba(40, 167, 70, 0.779)
 */
 
 button:hover {
-    border-color: #F0D574;
+    border-color: rgba(0, 107, 63, 0.08);;
     background-color: #52B878;
     color: black;
+    transition: all 0.3s ease;
 }
 
 button:focus,

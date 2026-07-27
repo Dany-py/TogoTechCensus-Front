@@ -18,16 +18,18 @@ const Footer = () => {
 
     return (
         <footer className="container-fluid footer">
+            <div className='footer-hr'></div>
             <div className="row">
                 <div className="col-md-4 me-auto" >
                     <h2><img alt="logo" src={logo} />TogoTechCensus</h2>
-                    <p style={{ color: '#F0D574', fontSize: '1.25em' }}>Let us digitize our potential together</p>
+                    <p style={{ color: '#006b3f', fontSize: '1.25em' }}>Let us digitize our potential together</p>
                 </div>
 
                 <div className="col-md-4">
                     <h2>Quick link</h2>
-                    <a className="navbar-brand" href="/explore">Explore</a> <br />
                     <a className="navbar-brand" href="/contact">Contacts</a> <br />
+                    <a className="navbar-brand" href="/explore">Explore</a> <br />
+                    <a className="navbar-brand" href="/ai-explore">AI-Explore</a> <br />
                 </div>
 
                 <div className="col-md-4">
