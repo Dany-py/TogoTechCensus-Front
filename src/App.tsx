@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { userAuth } from './services/auth.service';
 import { dashboardAction } from './services/project.service'
 import './App.css'
-import Akuvi from './pages/Akuvi';
+//import Akuvi from './pages/Akuvi';
 import Explore from './pages/Explore';
 import Terms from './pages/TS';
 import slugify from 'slugify';
@@ -64,10 +64,10 @@ const router = createBrowserRouter([
         path: "explore",
         element: <Explore />,
       },
-      {
+      /*{
         path: "ai-explore",
         element: <Akuvi />,
-      },
+      },*/
       {
         path: `project/${slugProject}`,
         element: <Details />,
