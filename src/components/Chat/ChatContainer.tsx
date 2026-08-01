@@ -1,8 +1,6 @@
 
 import "../../styles/Akuvi.css";
 import { useRef, useEffect, useState, type KeyboardEvent } from 'react';
-import type { Message } from '../../types/Chat.ts'
-import axios from "axios";
 
 export interface MessageInterface {
     sender: 'bot' | 'user',

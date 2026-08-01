@@ -1,4 +1,4 @@
-
+/*
 import "../styles/Akuvi.css";
 import { useState } from 'react';
 import ChatContainer from "../components/Chat/ChatContainer";
@@ -26,4 +26,4 @@ function Akuvi() {
     )
 }
 
-export default Akuvi;
+export default Akuvi;*/

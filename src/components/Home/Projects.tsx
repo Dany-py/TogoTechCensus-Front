@@ -1,13 +1,11 @@
 import type { IProject } from '../../types/Project';
 import project_png from '../../assets/project.png';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import slugify from 'slugify';
 import axios from 'axios';
 
 const Project = () => {
     const [project, setProject] = useState<Array<IProject>>([])
-    const navigate = useNavigate()
     const url = import.meta.env.VITE_API_PROJECT as string
     useEffect(() => {
         const LoadProject = async () => {
