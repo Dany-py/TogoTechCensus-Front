@@ -6,7 +6,7 @@ const Button: FC<ButtonProps> = ({ style, label, onClick }) => {
     return <>
         <button 
             style={{
-                backgroundColor:'#28a745',
+                backgroundColor:'#52B878',
                 color: '#ffff',
                 ...style
             }}

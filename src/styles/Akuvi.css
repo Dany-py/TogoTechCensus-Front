@@ -1,0 +1,171 @@
+
+.akuvi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 2rem clamp(1rem, 3vw, 2rem);
+    transition: all 0.3s ease;
+}
+
+.akuvi-active {
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+}
+
+.akuvi-chat-container {
+    width: min(80%, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    overflow-y: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.akuvi-chat-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.akuvi-chat-container::-webkit-scrollbar-thumb {
+    background: rgba(82, 184, 120, 0.35);
+    border-radius: 999px;
+}
+
+.akuvi-input-container-parent1,
+.akuvi-input-container-parent2 {
+    width: min(900px, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.akuvi-input-container {
+    width: 100%;
+    max-height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(82, 184, 120, 0.2);
+    border-radius: 30px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.akuvi-input-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+    border-color: rgba(82, 184, 120, 0.35);
+}
+
+.akuvi-input {
+    flex: 1;
+    border: none;
+    padding: 1em;
+    min-height: 48px;
+    max-height: 50vh;
+    color: #153824;
+    background: transparent;
+    text-align: start;
+    outline: none;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    transition: background-color 0.2s ease;
+}
+
+.akuvi-input:empty::before {
+    content: attr(data-placeholder);
+    color: #7b8a84;
+    font-style: italic;
+    pointer-events: none;
+}
+
+.akuvi-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #52b878 0%, #2f9d62 100%);
+    box-shadow: 0 8px 18px rgba(82, 184, 120, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.akuvi-btn:active {
+    transform: scale(0.96);
+}
+
+.user-message,
+.akuvi-message {
+    display: inline-flex;
+    align-items: flex-start;
+    width: fit-content;
+    max-width: min(100%, 42rem);
+    padding: 0.9rem 1rem;
+    border-radius: 18px;
+    margin: 0.25rem 0;
+    line-height: 1.5;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+    opacity: 0;
+    animation: messageAppear 0.35s ease forwards;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.user-message:hover,
+.akuvi-message:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(15, 23, 42, 0.12);
+}
+
+.user-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    justify-self: end;
+    margin-left: auto;
+    border: 1px solid rgba(82, 184, 120, 0.2);
+    color: #153824;
+}
+
+.akuvi-message {
+    justify-self: start;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(189, 153, 44, 0.2);
+    color: #3a2f0f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 1em;
+}
+
+.akuvi-disclaimer {
+    font-size: 0.9rem;
+    color: #57655f;
+    transition: opacity 0.2s ease;
+}
+
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

@@ -3,26 +3,26 @@ import logo from "../../assets/logo.png";
 import Link from '../ui/Link'
 import "../../styles/Home.css";
 import { useEffect, useState } from 'react';
+import { getCookie } from '../../services/csrf.service'
 
 
 function Navbar() {
     const [open, setOpen] = useState(false)
     const [isAuth, setAuth] = useState(false)
     const [isSign, setSign] = useState(false)
+    const auth = window.location.pathname
 
     useEffect(() => {
-        const auth = window.location.pathname
-        const storage = localStorage.getItem('')
-        //const cookies = cookieStore.getAll()
-        if (storage) {
+        const cookies = getCookie('sessionid')
+        if (cookies) {
             setSign(true)
         }
         if(auth === '/dashboard') {
             setAuth(true)
         }
-    }, [])
+    }, [auth])
     return(
-        <nav className = "navbar navbar-expand-lg">
+        <nav className = "navbar navbar-expand-xxl">
             <button
                 className = "navbar-toggler"
                 type = "button"
@@ -32,20 +32,28 @@ function Navbar() {
             </button>
             { isAuth ? '' : (
             <div className = {`collapse navbar-collapse ${open ? "show" : ""}`} id="navbar-2">
-                <h3 style={{color:'#28a745'}}><img alt = "logo" src ={logo} />TogoTechCensus</h3>
-                <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
+                <a style={{
+                    textDecoration: 'none',
+                    color:'#006b3f'}} href= "/" className="title-link"><img alt = "logo" src ={logo} />TogoTechCensus</a>
+                <ul className="navbar-nav mb-lg-0">
                     <li className="nav-item">
-                        <Link label='Explore' href= "#presentation"className= "navbar-brand"></Link>
+                        <Link label='Startups' href= "#home-project"className= "navbar-brand"></Link>
                     </li>
                     <li className="nav-item">
-                        <Link label='Network' href= "#marche"className= "navbar-brand"></Link>
+                        <Link label='Explore' href= "/explore"className= "navbar-brand"></Link>
+                    </li>
+                    {/*<li className="nav-item">
+                        <Link label='AI Explore' href= "/ai-explore"className= "navbar-brand"></Link>
                     </li>
                     <li className="nav-item">
-                        <Link label='Resources' href= "#faq"className= "navbar-brand"></Link>
+                        <Link label='Blog ' href= "#about"className= "navbar-brand"></Link>
+                    </li>*/}
+                    <li className="nav-item">
+                        <Link label='Contact' href= "/contact"className= "navbar-brand"></Link>
                     </li>
-                    <li className="nav-item d-gid">
-                        {isSign ? <Link label='Sign up' href= "/SignUp"className= "navbar-brand"></Link>
-                            : <Link label='Sign in' href= "/SignIn"className= "navbar-brand"></Link>
+                    <li className="nav-item navbar-nav-span">
+                        {isSign ? <Link label='Sign in' href= "/SignIn"className= "navbar-brand"></Link>
+                            : <Link label='Sign up' href= "/SignUp"className= "navbar-brand"></Link>
                         }
                     </li>
                 </ul>

@@ -6,6 +6,7 @@ function TitlePage({ refPath }: TitlePageProps) {
 
     const newRefPath = refPath as string
     let title1 = newRefPath.split('/')[1]
+    title1 = title1.charAt(0).toUpperCase() + title1.slice(1)
 
     const title = document.title
 
